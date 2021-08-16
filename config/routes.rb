@@ -1,17 +1,13 @@
 Rails.application.routes.draw do
   get root to: 'homes#top'
   get 'homes/about' => 'homes#about' 
-  devise_for :admins, controllers: {
-      sessions:      'admins/sessions',
-      passwords:     'admins/passwords',
-      registrations: 'admins/registrations'
-  }
-  devise_for :customers, controllers: {
+ 
+  namespace :public do
+     devise_for :customers, controllers: {
       sessions:      'customers/sessions',
       passwords:     'customers/passwords',
       registrations: 'customers/registrations'
-  }
-  namespace :public do
+  } 
     resources :items, only: [:index, :show] do
       resources :orders, only: [:show, :create]
       post 'orders/comfirm' => 'orders#comfirm'
@@ -30,6 +26,11 @@ Rails.application.routes.draw do
   end
   
   namespace :admin do
+    devise_for :admins, controllers: {
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords',
+    registrations: 'admins/registrations'
+  }
     resources :items
     resources :customers, only: [:index, :show]
     resources :genres, only: [:index, :create, :edit, :update]
