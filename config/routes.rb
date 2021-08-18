@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get root to: 'homes#top'
   get 'homes/about' => 'homes#about'
-  fasf
+  
  devise_for :customers, controllers: {
       sessions:      'customers/sessions',
       passwords:     'customers/passwords',
