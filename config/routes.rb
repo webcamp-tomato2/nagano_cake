@@ -20,10 +20,7 @@ Rails.application.routes.draw do
     end
 
     resources :customers, only: [:show, :edit, :update] do
-      member do
-        get "check"
-        patch "withdrawl"
-      end
+      put "/users/:id/hide" => "users#hide", as: 'users_hide'
       resources :shippings
     end
 
