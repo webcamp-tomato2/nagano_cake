@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get root to: 'homes#top'
   get 'homes/about' => 'homes#about'
-  
+
  devise_for :customers, controllers: {
       sessions:      'customers/sessions',
       passwords:     'customers/passwords',
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     passwords:     'admins/passwords',
     registrations: 'admins/registrations'
   }
-  
+
   namespace :public do
     resources :items, only: [:index, :show] do
       resources :orders, only: [:show, :create]
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :create, :destroy]
     resources :oder_items, only: [:index, :show]
     end
-    
+
 
   namespace :admin do
 
