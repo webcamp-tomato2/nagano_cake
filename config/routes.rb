@@ -8,33 +8,34 @@ Rails.application.routes.draw do
       registrations: 'customers/registrations'
   }
   devise_for :admins, controllers: {
-    sessions:      'admins/sessions',
-    passwords:     'admins/passwords',
-    registrations: 'admins/registrations'
+    sessions:      'admins/sessions'
   }
 
-  namespace :public do
-    resources :items, only: [:index, :show] do
-      resources :orders, only: [:show, :create]
-      post 'orders/comfirm' => 'orders#comfirm'
-    end
-
-    resources :customers, only: [:show, :edit, :update] do
-      put "/users/:id/hide" => "users#hide", as: 'users_hide'
-      resources :shippings
-    end
-
-    resources :cart_items, only: [:index, :create, :destroy]
-    resources :oder_items, only: [:index, :show]
-    end
+  scope module: :public do
+    resource :customers, only: [:show, :edit, :update]
+    get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'customers_unsubscribe'
+    patch '/customers/withdraw' => 'customers#withdraw', as: 'customers_withdraw'
+    
+    resources :items, only: [:index, :show]
+    
+    resources :orders, only: [:new, :index, :show, :create]
+    post 'orders/comfirm' => 'orders#comfirm'
+    get 'orders/thanx' => 'orders#thanx'
+    
+    resources :addresses, except: [:new, :show]
+    
+    resources :cart_items, only: [:index, :update, :create, :destroy]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    
+  end
 
 
   namespace :admin do
-
-    resources :items
-    resources :customers, only: [:index, :show]
+    resources :items, except: [:destroy]
+    resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :oder_items, only: [:index, :show]
+    resources :oders, only: [:index, :show, :update]
+    resources :order_items, only: [:update]
   end
 
 end
