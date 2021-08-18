@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get root to: 'homes#top'
   get 'homes/about' => 'homes#about'
-  
+  a
  devise_for :customers, controllers: {
       sessions:      'customers/sessions',
       passwords:     'customers/passwords',
@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     passwords:     'admins/passwords',
     registrations: 'admins/registrations'
   }
+  
   namespace :public do
-    
     resources :items, only: [:index, :show] do
       resources :orders, only: [:show, :create]
       post 'orders/comfirm' => 'orders#comfirm'
