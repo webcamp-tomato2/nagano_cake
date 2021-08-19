@@ -1,26 +1,27 @@
 class Admin::ItemsController < ApplicationController
- 
- 
+  before_action :authenticate_admin!
+
   def new
-  end 
- 
- 
+    @item = Item.new
+  end
+
+
   def index
-  end 
- 
- 
+  end
+
+
   def create
-  end 
- 
- 
+  end
+
+
   def edit
-  end 
- 
- 
+  end
+
+
   def show
   end
- 
- 
+
+
   def update
   end
 
