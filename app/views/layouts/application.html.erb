@@ -9,6 +9,35 @@
   </head>
 
   <body>
-    <%= yield %>
+    <!-- js読み込む -->
+    <script src="jquery.min.js"></script>
+    <script src="app.js"></script>
+    <!--ヘッダー-->
+    <header>
+      <div class="header-area">
+        <div class="heading">
+          <%= link_to root_path do %>
+            <%= image_tag"img/ol_nagano_logo.png",class:"logo"%>
+          <% end %>
+        </div>
+        <!-- リスト -->
+        <nav class="header-nav">
+          <ul>
+              <!--サインインする前-->
+              <li><%= link_to ' about',homes_about_path,class: 'nav-list-item' %></li>
+              <li><%= link_to ' 商品一覧',items_path,class: 'nav-list-item' %></li>
+              <li><%= link_to ' 新規登録',new_customer_registration_path,class: 'nav-list-item' %></li>
+              <li><%= link_to ' ログイン',new_customer_session_path,class: 'nav-list-item' %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <!--フッター-->
+    <footer>
+      <p>©︎2021 SummerTomato</p>
+    </footer>
   </body>
 </html>
