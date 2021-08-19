@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
     if resource_or_scope == :customer
       new_customer_session_path
     else
+
       root_path
     end
   end

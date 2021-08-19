@@ -62,16 +62,39 @@
     overflow: hidden;
     position: relative;
   }
+  .about_img__inner {
+    width: 700px;
+    height: 500px;
+    margin: 50px auto 0px;
+    overflow: hidden;
+    position: relative;
+  }
   .main-img {
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    opacity: 0;
+    /*透明度*/
+    /*あとで0に変える*/
+    opacity: 1;
+    /*変化するまでの時間を設定する*/
+    transition: all 1s;
+  }
+  .about-img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*透明度*/
+    /*あとで0に変える*/
+    opacity: 1;
+    /*変化するまでの時間を設定する*/
     transition: all 1s;
   }
   .current-img {
+    /*透明度*/
     opacity: 1;
+    /*要素の重なりについて指定する*/
     z-index: 20;
   }
   .text {
@@ -114,6 +137,22 @@
   .img {
     width: 150px;
     height: 150px;
+  }
+  .flame-image {
+    position: relative;
+    width: 600px;
+    margin: 50px auto;
+  }
+  .flame-image img{
+    width: 100%;
+  }
+  .flame-image p {
+    color: darkgray;
+    position: absolute;
+    text-align: center;
+    top: 30%;
+    right: 10%;
+    left: 10%;
   }
 
   /* フッター */
