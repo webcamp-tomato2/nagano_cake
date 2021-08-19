@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   get root to: 'homes#top'
   get 'homes/about' => 'homes#about'
 
@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       sessions:      'customers/sessions',
       passwords:     'customers/passwords',
       registrations: 'customers/registrations'
-
+  }
   devise_for :admins, controllers: {
     sessions:      'admins/sessions'
     }
