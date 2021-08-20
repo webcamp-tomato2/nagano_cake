@@ -27,9 +27,9 @@
           <td>販売ステータス</td>
           <td>
             <% if @item.is_active == true %>
-              "販売中"
+              <p>販売中</p>
             <% elsif @item.is_active == false %>
-              "販売停止中"
+              <p>販売停止中</p>
             <% end %>
           </td>
         </tr>
