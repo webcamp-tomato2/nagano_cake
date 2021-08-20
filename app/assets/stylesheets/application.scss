@@ -1,0 +1,182 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "bootstrap";
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: serif;
+  }
+
+  /* ヘッダー*/
+  header {
+    background-color: darkgray;
+    height: 70px;
+    width: 100%;
+  }
+  .header-area {
+    width: 90%;
+    display: flex;
+    align-items: center;
+  }
+  .logo {
+    height: 60px;
+    position: relative;
+    left: 20%;
+    top: 5px;
+  }
+  /* ヘッダーリスト */
+  nav {
+    margin: 0 0 0 auto;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    display: flex;
+  }
+  .nav-list-item {
+    color: #fafafa;
+    margin: auto 10px;
+    font-size: 16px;
+  }
+  /* メイン*/
+
+  .img__inner {
+    width: 100%;
+    height: 700px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+  }
+  .about_img__inner {
+    width: 700px;
+    height: 500px;
+    margin: 50px auto 0px;
+    overflow: hidden;
+    position: relative;
+  }
+  .main-img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    transition: all 1s;
+  }
+  .current-img {
+    opacity: 1;
+    /*透明度*/
+    /*あとで0に変える*/
+    opacity: 1;
+    /*変化するまでの時間を設定する*/
+    transition: all 1s;
+  }
+  .about-img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*透明度*/
+    /*あとで0に変える*/
+    opacity: 1;
+    /*変化するまでの時間を設定する*/
+    transition: all 1s;
+  }
+  .current-img {
+    /*透明度*/
+    opacity: 1;
+    /*要素の重なりについて指定する*/
+    z-index: 20;
+  }
+  .text {
+    text-align: center;
+    padding: 80px 0 40px;
+  }
+  .text p {
+    color: gray;
+  }
+  /* 新着商品 */
+  .title {
+    color: white;
+    font-family: serif;
+    margin: 30px auto 30px;
+    width: 130px;
+    text-align: center;
+    background: darkgrey;
+    padding: 0.5em;
+    border-radius: 20px;
+
+  }
+  .items {
+    width: 70%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    padding-bottom: 100px;
+    display: flex;
+  }
+  .new-items{
+    display: block;
+    margin: 0 10px;
+  }
+  .new-items p{
+    margin: 10px 0;
+    color: gray;
+  }
+
+  .img {
+    width: 150px;
+    height: 150px;
+  }
+  .flame-image {
+    position: relative;
+    width: 600px;
+    margin: 50px auto;
+  }
+  .flame-image img{
+    width: 100%;
+  }
+  .flame-image p {
+    color: darkgray;
+    position: absolute;
+    text-align: center;
+    top: 30%;
+    right: 10%;
+    left: 10%;
+  }
+  /* フッター */
+  footer {
+    background-color: darkgray;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  footer p {
+    color: white;
+    margin: auto;
+  }
+
+  /*  */
+  /*  */
+  /* 以下レスポンシブ対応記述？ */
