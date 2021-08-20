@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     sessions:      'admins/sessions'
     }
 
+
+
   scope module: :public do
     resource :customers, only: [:show, :edit, :update]
     get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'customers_unsubscribe'
