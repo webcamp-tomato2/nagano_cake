@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
       when Admin
         admin_item_path
       when Customer
-        homes_about_path
+        customers_path
     end
   end
 
@@ -17,12 +17,12 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
-  
-  
+
+
   protected
 
- def configure_permitted_parameters
-     devise_parameter_sanitizer.permit(:sign_up,keys:[:name])
- end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up,keys: [:first_name,:last_name,:first_name_kana,:last_name_kana,:portal_code,:address,:telephone_number])
+  end
 
 end
