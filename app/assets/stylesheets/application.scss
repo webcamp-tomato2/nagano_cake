@@ -13,10 +13,10 @@
  *= require_tree .
  *= require_self
  */
-  @import "bootstrap";
-  @import 'font-awesome-sprockets';
-  @import 'font-awesome';
 
+ @import "bootstrap";
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
   * {
     padding: 0;
     margin: 0;
@@ -77,6 +77,11 @@
     position: absolute;
     top: 0;
     left: 0;
+    opacity: 0;
+    transition: all 1s;
+  }
+  .current-img {
+    opacity: 1;
     /*透明度*/
     /*あとで0に変える*/
     opacity: 1;
@@ -157,7 +162,6 @@
     right: 10%;
     left: 10%;
   }
-
   /* フッター */
   footer {
     background-color: darkgray;
