@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-5, mx-auto">
       <table>
-        <%= form_with model: @item, local: true do |f| %>
+        <%= form_with model: @item, url:admin_items_path, local: true do |f| %>
         <tr>
           <td>商品画像</td>
           <td><%= f.attachment_field :image %></td>
@@ -18,8 +18,8 @@
         </tr>
         <tr>
           <td>ジャンル</td>
-          
-          <td><%= f.collection_select :genre, Genre.all, :id, :name, :include_blank => "カテゴリを選択してください" %></td>
+
+          <td><%= f.collection_select :genre_id, @genres, :id, :name, :include_blank => "カテゴリを選択してください" %></td>
         </tr>
         <tr>
           <td>税抜価格</td>

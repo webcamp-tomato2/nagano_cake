@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case resource
       when Admin
-        admin_item_path
+        admin_orders_path
       when Customer
         homes_about_path
     end
@@ -17,8 +17,7 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
-  
-  
+
   protected
 
  def configure_permitted_parameters
