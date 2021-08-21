@@ -2,7 +2,8 @@
   <div class="row">
     <h2>商品詳細</h2>
     <div class="col-3">
-      <%= attachment_image_tag @item, :image, :fill, 100,100 %>
+      <!--こちらの書き方に変更-->
+      <%= attachment_image_tag @item, :image, format: 'jpeg', size: "100x100" %>
     </div>
 
     <div class="col-8, col-offset-1">
@@ -37,6 +38,10 @@
           </td>
         </tr>
       </table>
+      
+      <%= form_with model:@item,url:cart_items_path,method: :post,local:true do |f| %>
+        
+      <% end %>
 
     </div>
   </div>
