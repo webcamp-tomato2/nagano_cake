@@ -1,8 +1,9 @@
-<h2>Sign up</h2>
-
-<%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
-  <%= render "customers/shared/error_messages", resource: resource %>
-
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  		<h1>User info</h1>
+<%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
+<%= render "customers/shared/error_messages", resource: resource %>
   <div class="field">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name, autofocus: true %>
@@ -40,22 +41,13 @@
     <%= f.email_field :email %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Update" %>
   </div>
 <% end %>
 
-<%= render "customers/shared/links" %>
+
+
+  </div>
+ </div>
+</div>
