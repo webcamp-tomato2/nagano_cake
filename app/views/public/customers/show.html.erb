@@ -4,7 +4,7 @@
 
     <div class="co-sm-2">
       <div class="btn btn-info">
-        <%= link_to "編集", edit_customers_path(current_customer), class: "btn btn-info" %>
+        <%= link_to "編集", edit_customers_path, class: "btn btn-info" %>
       </div>
         <div class="btn btn-info">
         <%= link_to "注文一覧", orders_path, class: "btn btn-info" %>
@@ -50,6 +50,16 @@
 		<tr valign="middle">
 		<td width="100">telephone_number</td>
 		<td width="100"><%= current_customer.telephone_number %></td>
+		</tr>
+		<tr valign="middle">
+		<td width="100">customer_status</td>
+		<td width="100" class="btn btn-success">
+			<% if current_customer.is_deleted? %>
+			退会済み
+			<% else %>
+			有効会員
+			<% end %>
+		</td>
 		</tr>
 	</tbody>
 
