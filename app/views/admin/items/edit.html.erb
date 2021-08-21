@@ -1,9 +1,9 @@
 <div class="container">
-  <h2>商品新規登録</h2>
+  <h2>商品編集画面</h2>
   <div class="row">
     <div class="col-5, mx-auto">
       <table>
-        <%= form_with model: @item, url: admin_items_path, local: true do |f| %>
+        <%= form_with model: @item, url: admin_item_path(@item), local: true do |f| %>
         <tr>
           <td>商品画像</td>
           <td><%= f.attachment_field :image %></td>
@@ -34,7 +34,7 @@
           </td>
         </tr>
         <tr>
-          <td><%= f.submit '新規登録' %></td>
+          <td><%= f.submit '変更を保存' %></td>
         </tr>
         <% end %>
       </table>

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     sessions:      'admins/sessions'
     }
 
+
+
   scope module: :public do
     resource :customers, only: [:show, :edit, :update]
     get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'customers_unsubscribe'
@@ -34,7 +36,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :items, except: [:destroy]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :genres, only: [:index, :create, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :destroy, :update]
     resources :orders, only: [:index, :show, :update]
     resources :order_items, only: [:update]
   end
