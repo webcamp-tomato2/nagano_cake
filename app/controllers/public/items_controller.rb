@@ -3,7 +3,7 @@ class Public::ItemsController < ApplicationController
   def index
     @items = Item.all
     @item = Item.find_by(params[:id])
-  end 
+  end
 
   def show
     @item = Item.find_by(params[:id])

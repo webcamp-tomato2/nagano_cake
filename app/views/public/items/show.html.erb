@@ -38,11 +38,21 @@
           </td>
         </tr>
       </table>
-      
-      <%= form_with model:@item,url:cart_items_path,method: :post,local:true do |f| %>
-        
+      <!--カートに商品を入れる-->
+      <% if @item.is_active == false %>
+        <p>soldout</p>
+      <% else %>
+        <% if customer_signed_in? %>
+          <%= form_with model:@cart_item,url:cart_items_path,method: :post,local:true do |f| %>
+            <%= f.hidden_field :item_id, value:@item.id %>
+            <%= f.hidden_field :customer_id, :value => current_customer.id %>
+            <%= f.select :amount,[1,2,3,4,5,6,7,8,9,10],{include_blank:'個数選択'},required:true %>
+            <%= f.submit 'カートに入れる' %>
+          <% end %>
+        <% else %>
+          <p>注文にはログインが必要です</p>
+        <% end %>
       <% end %>
-
     </div>
   </div>
 </div>
