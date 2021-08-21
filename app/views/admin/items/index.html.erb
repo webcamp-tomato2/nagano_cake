@@ -2,24 +2,26 @@
 
 <table class="table">
   <thead class="thead-light">
-    <tr>商品ID</tr>
-    <tr>商品名</tr>
-    <tr>税抜き価格</tr>
-    <tr>ジャンル</tr>
-    <tr>販売ステータス</tr>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜き価格</th>
+      <th>ジャンル</th>
+      <th>販売ステータス</th>
+    </tr>
   </thead>
   <tbody>
     <% @items.each do |item| %>
       <tr>
         <td><%= item.id %></td>
         <td><%= link_to item.name, admin_item_path(item) %></td>
-        <td><%= item.price %></td>
-        <td><%= item.genre %></td>
+        <td><%= item.price.to_s(:delimited) %>円</td>
+        <td><%= item.genre.name %></td>
         <td>
           <% if item.is_active == true %>
-            "販売中"
+            <p>販売中</p>
           <% else %>
-            "販売停止中"
+            <p>販売停止中</p>
           <% end %>
         </td>
       </tr>
