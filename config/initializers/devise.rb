@@ -12,7 +12,7 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # Devise will use the `secret_key_base` as its `secret_key`
+  # Devise will use the secret_key_base as its secret_key
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '2e0abf531aa82e010ae10742d2fe6ffa1fd36a1d450188629a7c871c8082175d641c4c9963b38e7ab9ed98e205fcb089331b54d0f6d198aa492375e7315b0ba7'
 
@@ -46,7 +46,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-   config.authentication_keys = [:name]
+  # config.authentication_keys = [:email]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -67,13 +67,13 @@ Devise.setup do |config|
 
   # Tell if authentication through request.params is enabled. True by default.
   # It can be set to an array that will enable params authentication only for the
-  # given strategies, for example, `config.params_authenticatable = [:database]` will
+  # given strategies, for example, config.params_authenticatable = [:database] will
   # enable it only for database (email + password) authentication.
   # config.params_authenticatable = true
 
   # Tell if authentication through HTTP Auth is enabled. False by default.
   # It can be set to an array that will enable http authentication only for the
-  # given strategies, for example, `config.http_authenticatable = [:database]` will
+  # given strategies, for example, config.http_authenticatable = [:database] will
   # enable it only for database authentication.
   # For API-only applications to support authentication "out-of-the-box", you will likely want to
   # enable this with :database unless you are using a custom strategy.
@@ -96,7 +96,7 @@ Devise.setup do |config|
   # particular strategies by setting this option.
   # Notice that if you are skipping storage for all authentication paths, you
   # may want to disable generating routes to Devise's sessions controller by
-  # passing skip: :sessions to `devise_for` in your config/routes.rb
+  # passing skip: :sessions to devise_for in your config/routes.rb
   config.skip_session_storage = [:http_auth]
 
   # By default, Devise cleans up the CSRF token on authentication to
@@ -237,7 +237,7 @@ Devise.setup do |config|
   # for default behavior) and :restful_authentication_sha1 (then you should set
   # stretches to 10, and copy REST_AUTH_SITE_KEY to pepper).
   #
-  # Require the `devise-encryptable` gem when using anything other than bcrypt
+  # Require the devise-encryptable gem when using anything other than bcrypt
   # config.encryptor = :sha512
 
   # ==> Scopes configuration
