@@ -24,19 +24,18 @@
 			<th></th>
 		</tr>
 	</thead>
-	<% index = 1 %>
-	<% @addresses.each do |address|%>
+	
 	<tbody>
+		<% @addresses.each.with_index(1) do |customer_address,i| %>
 		<tr valign="middle"></tr>
-			<td><% index %></td>
-			<td>customer.address.name</td>
-			<td>customer.address.postal_code</td>
-			<td>customer.address.address</td>
-			<td><%= link_to "！編集！", edit_adderess_path(current_customer) %></td>
+			<td><%= i %></td>
+			<td><%= customer_address.name %></td>
+			<td><%= customer_address.postal_code %></td>
+			<td><%= customer_address.address %></td>
+			<td><%= link_to "！編集！", edit_address_path(customer_address) %></td>
 		</tr>
+			<% end %>
 	</tbody>
-	<% index += 1 %>
-	<% end %>
  </table>
 
     </div>
