@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <h2>新規住所登録！！</h2>
+      <%= form_with model: @address,local: true do |f| %>
+      <p>宛名</p>
+      <%= f.text_field :name %>
+      <p>郵便番号</p>
+      <%= f.text_field :postal_code %>
+      <p>住所</p>
+      <%= f.text_field :address %>
+      <%= f.submit "新しい住所登録しちゃおう！"%>
+      <% end %>
+    </div>
+    <div class="col-8 mx-auto">
+      <h1>配送先一覧</h1>
+  <table>
+	<thead>
+		<tr valign="middle">
+			<th width="100">配送先NO.</th>
+			<th width="100">宛名</th>
+			<th width="100">郵便番号</th>
+			<th width="200">住所</th>
+			<th></th>
+		</tr>
+	</thead>
+	<% index = 1 %>
+	<% @addresses.each do |address|%>
+	<tbody>
+		<tr valign="middle"></tr>
+			<td><% index %></td>
+			<td>customer.address.name</td>
+			<td>customer.address.postal_code</td>
+			<td>customer.address.address</td>
+			<td><%= link_to "！編集！", edit_adderess_path(current_customer) %></td>
+		</tr>
+	</tbody>
+	<% index += 1 %>
+	<% end %>
+ </table>
+
+    </div>
+  </div>
+</div>
