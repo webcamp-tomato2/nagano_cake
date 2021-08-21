@@ -1,0 +1,17 @@
+  <div class="container">
+    <div class="row">
+      <div class="col-5 mx-auto">
+        <h2>🏠お届け先の編集ページよ！！🏠</h2>
+        <%= form_with model: @address,local: true do |f| %>
+        <p>宛名</p>
+        <%= f.text_field :name, class: "form-control" %>
+        <p>郵便番号(ハイフン入れないよ！)</p>
+        <%= f.text_field :postal_code, class: "form-control" %>
+        <p>住所</p>
+        <%= f.text_field :address, class: "form-control" %>
+        <%= f.submit "変更完了",class: "btn btn-info" %><%= link_to "削除", address_path(@address), method: :delete, class: "btn btn-danger" %>
+        <% end %>
+      </div>
+      </div>
+    </div>
+  </div>
