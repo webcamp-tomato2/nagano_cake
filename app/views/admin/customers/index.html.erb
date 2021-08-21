@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="coll">
+    <div class="col-10, mx-auto, container-fluid">
       <h2>会員一覧</h2>
-      <table>
-        <thead>
+      <table class="table">
+        <thead class="thead-light">
           <tr>
             <th>会員ID</th>
             <th>氏名</th>
@@ -11,21 +11,22 @@
             <th>ステータス</th>
           </tr>
         </thead>
-        
+
         <tbody>
           <% @customers.each do |customer| %>
           <tr>
             <td><%= customer.id %></td>
-            <td><%= customer.last_name %> <%= customer.first_name %></td>
+            <td><%= link_to customer.full_name, admin_customer_path(customer) %></td>
             <td><%= customer.email %></td>
             <td>
-              <% if customer.is_deleted == true %>
+              <% if customer.is_deleted == false %>
                 <p>有効</p>
               <% else %>
                 <p>退会</p>
               <% end %>
             </td>
           </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
