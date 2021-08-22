@@ -1,31 +1,18 @@
 <h2>商品一覧</h2>
+<!--１つの固まり-->
+<% @items.each do |item| %>
+<div class="row">
+  <div class="card" style="width: 280px;">
+    <!--画像-->
+      <%= link_to item_path(item) do %>
+        <div class="bd-placeholder-img card-img-top"><%= attachment_image_tag item, :image, format: 'jpeg', size: "280x280" %>
+      <% end %>
+    <div class="card-body">
+      <h5 class="card-title"><%= item.name %></h5>
+      <p class="card-text">¥<%= item.price.to_s(:delimited) %></p>
+    </div>
+  </div>
+</div>
 
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜き価格</th>
-      <th>ジャンル</th>
-      <th>販売ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.id %></td>
-        <td><%= item.name %></td>
-        <td><%= item.price.to_s(:delimited) %>円</td>
-        <td><%= item.genre.name %></td>
-        <td>
-          <% if item.is_active == true %>
-            <p>販売中</p>
-          <% else %>
-            <p>販売停止中</p>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% end %>
 

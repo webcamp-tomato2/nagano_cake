@@ -47,3 +47,4 @@ class Customers::SessionsController < Devise::SessionsController
     end
   end
 end
+
