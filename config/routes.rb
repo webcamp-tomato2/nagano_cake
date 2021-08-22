@@ -21,8 +21,13 @@ Rails.application.routes.draw do
 
     resources :items, only: [:index, :show]
 
-    resources :orders, only: [:new, :index, :show, :create]
     post 'orders/confirm' => 'orders#confirm'
+    resources :orders, only: [:new, :index, :show, :create]
+<<<<<<< HEAD
+    post 'orders/confirm' => 'orders#confirm'
+=======
+
+>>>>>>> origin/develop
     get 'orders/thanx' => 'orders#thanx'
 
     resources :addresses, except: [:new, :show]

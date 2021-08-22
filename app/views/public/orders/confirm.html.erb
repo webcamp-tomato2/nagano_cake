@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container">
   <div class="row">
     <div class="col-4">
@@ -72,3 +73,34 @@
 ○ 商品の注文内容詳細（商品名、単価、個数、小計）
 ○ 請求情報（商品合計、送料、支払金額）
 ● 会員登録時、下記の情報をユーザ情報として入力できること
+=======
+<table class="table">
+    <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <!--修正中-->
+        <% @cart_items.each do |cart_item| %>
+        <tr>
+            <td>
+                <%= cart_item.item.name %>
+            </td>
+            <td>
+                <!--税込-->
+                <%= cart_item.add_tax_price %>
+            </td>
+            <td>
+                <!--小計-->
+               <%= cart_item.sub_price %>
+             </td>
+        </tr>
+        <% end %>
+    </tbody>
+>>>>>>> origin/develop
