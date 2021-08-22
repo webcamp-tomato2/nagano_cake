@@ -33,14 +33,11 @@ class Public::OrdersController < ApplicationController
         redirect_to orders_thanx_path
     end
 
-<<<<<<< Updated upstream
 
     def thanx
     end
 
 
-    def index
-=======
     def index
         @orders = current_customer.orders
     end
@@ -48,7 +45,6 @@ class Public::OrdersController < ApplicationController
     def show
         @order = current_customer.orders
         @order_details = @order.order_details
->>>>>>> Stashed changes
     end
 
     def show
@@ -57,4 +53,5 @@ class Public::OrdersController < ApplicationController
     def order_params
         params.require(:order).permit(:postal_code, :payment_method, :order_address, :address_option)
     end
+    
 end

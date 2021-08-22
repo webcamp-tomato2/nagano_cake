@@ -1,7 +1,7 @@
 <h2>注文情報入力</h2>
 
 <!-- 注文確認画面へ -->
-<%= form_with model: @order, url: orders_comfirm_path, method: :post, local: true do |f| %>
+<%= form_with model: @order, url: orders_confirm_path, method: :post, local: true do |f| %>
   <P>支払方法</P><br>
   <%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %>
   <%= f.label :payment_method, "クレジットカード" %>
