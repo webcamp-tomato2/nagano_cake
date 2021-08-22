@@ -11,7 +11,6 @@
       <th>小計</th>
       <th></th>
     </tr>
-    <!--修正中-->
     <% @cart_items.each do |cart_item| %>
     <tr>
       <td>
@@ -22,27 +21,30 @@
       </td>
       <td>
         <!--税込-->
-        <%= cart_item.add_tax_price %>
+        <%= cart_item.add_tax_price.to_s(:delimited) %>
       </td>
       <td>
         <%= form_with model:cart_item,url:cart_item_path(cart_item),method: :patch,local:true do |f| %>
+          <!--この隠れフィールド必要？これで商品と数量をリンクさせている？-->
           <%= f.hidden_field :item_id, value:cart_item.item.id %>
+          <!--valueであらかじめcart_itemのamountを記述しておく-->
           <%= f.number_field :amount,value:cart_item.amount,id:"number",min:"1" %>
           <%= f.submit '数量変更' %>
         <% end %>
       </td>
       <td>
         <!--小計-->
-        <%= cart_item.sub_price %>
+        <%= cart_item.sub_price.to_s(:delimited) %>
       </td>
       <td>
         <%= link_to "削除する",cart_item_path(cart_item),method: :delete %>
       </td>
+
     </tr>
     <% end %>
   </thread>
 
 </table>
 <div>
-  <p>合計金額</p>
+  <p>合計金額<%= @total.round.to_s(:delimited) %>円</p>
 </div>
