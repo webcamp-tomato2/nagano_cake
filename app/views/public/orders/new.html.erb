@@ -1,0 +1,46 @@
+<h2>注文情報入力</h2>
+
+<!-- 注文確認画面へ -->
+<%= form_with model: @order, url: orders_confirm_path, method: :post, local: true do |f| %>
+  <P>支払方法</P><br>
+  <%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %>
+  <%= f.label :payment_method, "クレジットカード" %>
+  <%= f.radio_button :payment_method, :銀行振込 %>
+  <%= f.label :payment_method, "銀行振込" %>
+  <br>
+
+  <p>お届け先</p><br>
+  <!-- address_optionに情報を入れてコントローラに値（０，１，２）を送る
+  ラジオボタンが一つしか選択できないように、labelは全部これ！ -->
+  <%= f.radio_button :address_option, 0 %>
+  <!-- ordre_addressに情報を入れてコントローラに送る
+  ここに保存されたのが、配送先の住所→コントローラでorderモデルのカラムaddressに置き換える -->
+  <%= f.label :order_address, "ご自身の住所" %><br>
+  <%= current_customer.postal_code %>
+  <%= current_customer.address %><br>
+  <%= current_customer.full_name %>
+  <br>
+
+  <%= f.radio_button :address_option, 1 %>
+  <!-- order_addressを使うと、”新しいお届け先”のaddress_orderと重複して上書きされてしまうから
+  order_address_idにする -->
+  <%= f.label :order_address_id, "登録済み住所から登録" %><br>
+  <%= f.collection_select :order_address_id , current_customer.addresses, :id, :address , :include_blank => "選択してください" %>
+  <br>
+
+  <%= f.radio_button :address_option, 2 %>
+  <%= f.label :order_address, "新しいお届け先" %><br>
+
+  <%= f.label :postal_code, "郵便番号" %>
+  <%= f.text_field :postal_code %>
+
+  <%= f.label :address_option, "住所" %>
+  <%= f.text_field :order_address %>
+  <br>
+
+  <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+
+<% end %>
+
+
+
