@@ -1,5 +1,7 @@
 class CartItem < ApplicationRecord
   belongs_to :customer
+  validates :amount, presence: true
+
   belongs_to :item
   # インスタンスメソッド(それぞれのインスタンスに対して参照などをするメソッド)
   def add_tax_price
@@ -12,4 +14,5 @@ class CartItem < ApplicationRecord
     add_tax_price*self.amount
   end
   # 合計金額についてはcart_itemコントローラに記述しています
+
 end

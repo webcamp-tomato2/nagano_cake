@@ -24,17 +24,17 @@
 			<th></th>
 		</tr>
 	</thead>
-	
+
 	<tbody>
 		<% @addresses.each.with_index(1) do |customer_address,i| %>
 		<tr valign="middle"></tr>
-			<td><%= i %></td>
-			<td><%= customer_address.name %></td>
-			<td><%= customer_address.postal_code %></td>
-			<td><%= customer_address.address %></td>
-			<td><%= link_to "！編集！", edit_address_path(customer_address) %></td>
+    		<td><%= i %></td>
+    		<td><%= customer_address.name %></td>
+    		<td><%= customer_address.postal_code %></td>
+    		<td><%= customer_address.address %></td>
+    		<td><%= link_to "！編集！", edit_address_path(customer_address) %></td>
 		</tr>
-			<% end %>
+		<% end %>
 	</tbody>
  </table>
 

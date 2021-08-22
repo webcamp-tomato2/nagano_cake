@@ -21,15 +21,19 @@
 
           <% end %>
         </div>
-        <!-- リスト -->
         <nav class="header-nav">
           <ul>
-              <!--サインインする前-->
-              <li><%= link_to ' about',homes_about_path,class: 'nav-list-item' %></li>
-              <li><%= link_to ' items',items_path,class: 'nav-list-item' %></li>
-              <li><%= link_to ' 新規登録',new_customer_registration_path,class: 'nav-list-item' %></li>
-              <li><%= link_to ' ログイン',new_customer_session_path,class: 'nav-list-item' %></li>
-              
+            
+              <% if customer_signed_in? %>
+              <li><%= link_to ' お店の紹介', homes_about_path,class: 'nav-list-item' %></li>
+              <li><%= link_to ' 商品一覧', items_path,class: 'nav-list-item' %></li>
+              <li><%= link_to ' ログアウト', destroy_customer_session_path(current_customer),method: :delete, class: 'nav-list-item' %></li>
+              <% else %>
+              <li><%= link_to ' お店の紹介', homes_about_path,class: 'nav-list-item' %></li>
+              <li><%= link_to " 商品一覧", items_path,class: 'nav-list-item' %></li>
+              <li><%= link_to ' 新規登録', new_customer_registration_path,class: 'nav-list-item' %></li>
+              <li><%= link_to ' ログイン', new_customer_session_path,class: 'nav-list-item' %></li>
+              <% end %>
           </ul>
         </nav>
       </div>
@@ -37,7 +41,7 @@
     <main>
       <%= yield %>
     </main>
-    <!--フッター-->
+    
     <footer>
       <p>©︎2021 SummerTomato</p>
     </footer>
