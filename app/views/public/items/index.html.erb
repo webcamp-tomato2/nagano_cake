@@ -1,18 +1,27 @@
+<!--ジャンル検索-->
+<%= render 'public/items/genre', genres: @genres %>
+
 <h2>商品一覧</h2>
 <!--１つの固まり-->
 <% @items.each do |item| %>
-<div class="row">
-  <div class="card" style="width: 280px;">
-    <!--画像-->
+  <div class="row">
+    <div class="card" style="width: 280px;">
+      <!--画像-->
       <%= link_to item_path(item) do %>
-        <div class="bd-placeholder-img card-img-top"><%= attachment_image_tag item, :image, format: 'jpeg', size: "280x280" %>
+        <div class="bd-placeholder-img card-img-top"><%= attachment_image_tag item, :image, format: 'jpeg', size: "280x280" %></div>
       <% end %>
-    <div class="card-body">
-      <h5 class="card-title"><%= item.name %></h5>
-      <p class="card-text">¥<%= item.price.to_s(:delimited) %></p>
+      <div class="card-body">
+        <h5 class="card-title"><%= item.name %></h5>
+        <p class="card-text">¥<%= item.price.to_s(:delimited) %></p>
+      </div>
     </div>
   </div>
-</div>
-
 <% end %>
+
+
+
+
+
+
+
 
