@@ -6,6 +6,8 @@ class Customer < ApplicationRecord
 
   has_many :addresses, dependent: :destroy
   has_many :cart_items, dependent: :destroy
+  has_many :order_details, dependent: :destroy
+  has_many :order, dependent: :destroy
 
 
   def active_for_authentication?
@@ -14,6 +16,10 @@ class Customer < ApplicationRecord
 
   def full_name
     "#{last_name}#{first_name}"
+  end
+  
+  def customer_full_address
+    "#{postal_code} #{address}"
   end
 
 end

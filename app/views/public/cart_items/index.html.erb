@@ -47,4 +47,5 @@
 </table>
 <div>
   <p>合計金額<%= @total.round.to_s(:delimited) %>円</p>
+  <%= link_to "注文情報登録", new_order_path, class:"btn btn-info" %>
 </div>
