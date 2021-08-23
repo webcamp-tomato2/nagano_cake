@@ -29,7 +29,20 @@
               <li><%= link_to ' items',items_path,class: 'nav-list-item' %></li>
               <li><%= link_to ' 新規登録',new_customer_registration_path,class: 'nav-list-item' %></li>
               <li><%= link_to ' ログイン',new_customer_session_path,class: 'nav-list-item' %></li>
-              
+              <li>
+                <!--検索フォームをform_withで実装-->
+                <div class="name-search">
+                  <% if customer_signed_in? %>
+                    <%= form_with url: search_search_path, method: :get, local: true do |f| %>
+                      <!--フォームに打ち込まれた文字列をvalueとして送信-->
+                      <%= f.text_field 'search[value]', size: "20x4", placeholder:"商品名を検索" %>
+                      <span class="search-button col-xs-12 text-right">
+                        <%= f.submit :"検索" %>
+                      </span>
+                    <% end %>
+                  <% end %>
+                </div>
+              </li>
           </ul>
         </nav>
       </div>
