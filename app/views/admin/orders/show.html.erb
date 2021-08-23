@@ -13,7 +13,7 @@
         <tr>
           <td>配送先</td>
           <td>
-            <%= @order.postal_cord %> <%= @order.address %> <br>
+            <%= @order.postal_code %> <%= @order.address %> <br>
             <%= @order.name %>
           </td>
         </tr>
@@ -36,7 +36,7 @@
 
   <div class="row">
     <div class="col-8">
-      <table>
+      <table class="table">
         <thead>
           <th>商品名</th>
           <th>単価（税込み）</th>
@@ -51,13 +51,15 @@
               <td><%= order_detail.item.name %></td>
               <td><%= order_detail.item.price.to_s(:datetime) %></td>
               <td><%= order_detail.amount %></td>
+              <td><%= (order_detail.item.price * order_detail.amount).to_s(:delimited) %></td>
               <td>
-                <%= form_with model :order_detail, url: admin_order_detail_path(@order), local :true do |f| %>
-                  <%= f.select :making_status, options_for_select(Order_details.making_statuses.to_a), {}, {class: 'mclist__select'} %>
+                <%= form_with model: order_detail, url: admin_order_detail_path(@order), method: :patch, local: true do |f| %>
+                  <%= f.select :making_status, options_for_select(OrderDetail.making_statuses), {prompt: "選択してください"} %>
                   <%= f.submit "更新", class: 'btn-info' %>
                 <% end %>
               </td>
             </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
@@ -66,7 +68,7 @@
       <table>
         <tr>
           <td>合計金額</td>
-          <td><%= @total.round.to_s(:delimited) %>円</td>
+          <td><%= (@order.total_payment.to_i - @order.shipping_cost).to_s(:delimited) %>円</td>
         </tr>
         <tr>
           <td>送料</td>
@@ -74,7 +76,7 @@
         </tr>
         <tr>
           <td>請求金額合計</td>
-          <td></td>
+          <td><%= @order.total_payment.to_s(:delimited) %>円</td>
         </tr>
       </table>
     </div>
