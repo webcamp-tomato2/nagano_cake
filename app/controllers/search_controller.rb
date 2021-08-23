@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
-  # 一旦コピペ
+
   def search
     # 記入したvalue(検索ワード)の値を@valueに代入
     @content = params["search"]["value"]

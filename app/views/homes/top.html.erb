@@ -24,16 +24,9 @@
     </div>
   </div>
 <% end %>
-<!-- ジャンル -->
-<!--あとで直す-->
-<h5 class="title">ジャンル</h5>
-<div class="items">
-  <div class="new-items">
-    <% @genres.each do |genre| %>
-      <%= genre.name %>
-    <% end %>
-  </div>
-</div>
+
+<!--ジャンル-->
+<%= render 'public/items/genre', genres: @genres %>
 
 
 
