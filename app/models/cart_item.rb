@@ -1,6 +1,6 @@
 class CartItem < ApplicationRecord
   belongs_to :customer
-  validates :amount, presence: true
+  # validates :amount, presence: true
 
   belongs_to :item
   # インスタンスメソッド(それぞれのインスタンスに対して参照などをするメソッド)

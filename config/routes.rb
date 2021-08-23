@@ -20,15 +20,10 @@ Rails.application.routes.draw do
     patch '/customers/withdraw' => 'customers#withdraw', as: 'customers_withdraw'
 
     resources :items, only: [:index, :show]
-
+    get 'orders/thanx' => 'orders#thanx'
     post 'orders/confirm' => 'orders#confirm'
     resources :orders, only: [:new, :index, :show, :create]
-<<<<<<< HEAD
-    post 'orders/confirm' => 'orders#confirm'
-=======
 
->>>>>>> origin/develop
-    get 'orders/thanx' => 'orders#thanx'
 
     resources :addresses, except: [:new, :show]
 

@@ -5,10 +5,10 @@ class Item < ApplicationRecord
   
   attachment :image
   attachment :image
-  validates :name, presence: true
-  validates :image, presence: true
-  validates :introduction, presence: true
-  validates :price, presence: true
+  # validates :name, presence: true
+  # validates :image, presence: true
+  # validates :introduction, presence: true
+  # validates :price, presence: true
 
   # いらないかも
   def add_tax_price
