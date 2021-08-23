@@ -1,29 +1,79 @@
-<table class="table">
-    <thead>
-        <tr>
-          <th>商品名</th>
-          <th>単価(税込)</th>
-          <th>数量</th>
-          <th>小計</th>
-          <th></th>
-        </tr>
-    </thead>
+<div class="container">
+  <div class="row">
 
-    <tbody>
-        <!--修正中-->
-        <% @cart_items.each do |cart_item| %>
+    <div class="col-6">
+      <h2>注文の確認ページ</h2>
+
+ <table class="table table-bordered">
+
         <tr>
-            <td>
-                <%= cart_item.item.name %>
-            </td>
-            <td>
-                <!--税込-->
-                <%= cart_item.add_tax_price %>
-            </td>
-            <td>
-                <!--小計-->
-               <%= cart_item.sub_price %>
-             </td>
+        <th>配送先(お届け先)</th>
+        <td>
+        <div><%= @order.address %></div>
+        <div><%= @order.name %></div>
+        </td>
         </tr>
+        <tr>
+        <th>支払方法</th>
+         <td><%= @order.payment_method %></td>
+        </tr>
+        <tr>
+         <th>ステータス</th>
+          <td><%= @order.status %></td>
+        </tr>
+      </table>
+      <h3>請求額</h3>
+            <div class="col-6">
+         <table class="table table-bordered">
+
+        <tr>
+        <th>送料</th>
+        <td>
+        <div><%= @order.shipping_cost %></div>
+        </td>
+        </tr>
+        <tr>
+        <th>商品合計金額</th>
+         <td><%= @total %>>
+        </tr>
+        <tr>
+         <th>請求額</th>
+          <td><%= @order.total_payment %></td>
+        </tr>
+      </table>
+      </div>
+        <%= form_with model: @order, url: orders_path , method: :post, local: true do |f| %>
+        <%= f.hidden_field :postal_code, :value => @order.postal_code %>
+        <%= f.hidden_field :address, :value => @order.address %>
+        <%= f.hidden_field :name, :value => @order.name %>
+        <%= f.hidden_field :total_payment, :value => @total + 800 %>
+        <%= f.submit "注文完了", class: "btn btn-info" %>
         <% end %>
-    </tbody>
+      </div>
+
+    <div class="col-5">
+      <h4>購入商品(内訳)</h4>
+ <table class="table table-bordered">
+        <thead>
+          <th width="100">商品名</th>
+          <th width="200">単価（税込み）</th>
+          <th width="100">数量</th>
+          <th width="100">小計</th>
+        </thead>
+
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td><%= cart_item.item.name %></td>
+              <td><%= cart_item.order_detail.price%></td>
+              <td><%= cart_item.amount %></td>
+              <td><%= @total %></td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+

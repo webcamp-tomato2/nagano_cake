@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'search/search'
   get root to: 'homes#top'
   get 'homes/about' => 'homes#about'
 
@@ -20,11 +21,10 @@ Rails.application.routes.draw do
     patch '/customers/withdraw' => 'customers#withdraw', as: 'customers_withdraw'
 
     resources :items, only: [:index, :show]
-
+    get 'orders/thanx' => 'orders#thanx'
     post 'orders/confirm' => 'orders#confirm'
     resources :orders, only: [:new, :index, :show, :create]
 
-    get 'orders/thanx' => 'orders#thanx'
 
     resources :addresses, except: [:new, :show]
 

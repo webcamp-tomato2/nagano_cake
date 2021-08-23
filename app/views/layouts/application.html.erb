@@ -18,18 +18,35 @@
         <div class="heading">
           <%= link_to root_path do %>
             <%= image_tag"img/ol_nagano_logo.png",class:"logo"%>
-
           <% end %>
         </div>
-        <!-- リスト -->
         <nav class="header-nav">
           <ul>
-              <!--サインインする前-->
-              <li><%= link_to ' about',homes_about_path,class: 'nav-list-item' %></li>
-              <li><%= link_to ' items',items_path,class: 'nav-list-item' %></li>
-              <li><%= link_to ' 新規登録',new_customer_registration_path,class: 'nav-list-item' %></li>
-              <li><%= link_to ' ログイン',new_customer_session_path,class: 'nav-list-item' %></li>
-              
+              <% if customer_signed_in? %>
+              <li><%= link_to ' お店の紹介', homes_about_path, class: 'nav-list-item' %></li>
+              <li><%= link_to ' 商品一覧', items_path, class: 'nav-list-item' %></li>
+              <li><%= link_to ' カートリスト', cart_items_path, class: 'nav-list-item' %></li>
+              <li><%= link_to ' マイページ', customers_path, class: 'nav-list-item' %></li>
+              <li><%= link_to ' ログアウト', destroy_customer_session_path(current_customer),method: :delete, class: 'nav-list-item' %></li>
+              <% else %>
+              <li><%= link_to ' お店の紹介', homes_about_path, class: 'nav-list-item' %></li>
+              <li><%= link_to " 商品一覧", items_path, class: 'nav-list-item' %></li>
+              <li><%= link_to ' 新規登録', new_customer_registration_path, class: 'nav-list-item' %></li>
+              <li><%= link_to ' ログイン', new_customer_session_path, class: 'nav-list-item' %></li>
+              <% end %>     
+                <!--検索フォームをform_withで実装-->
+                <div class="name-search">
+                  <% if customer_signed_in? %>
+                    <%= form_with url: search_search_path, method: :get, local: true do |f| %>
+                      <!--フォームに打ち込まれた文字列をvalueとして送信-->
+                      <%= f.text_field 'search[value]', size: "20x4", placeholder:"商品名を検索" %>
+                      <span class="search-button col-xs-12 text-right">
+                        <%= f.submit :"検索" %>
+                      </span>
+                    <% end %>
+                  <% end %>
+                </div>
+              </li>
           </ul>
         </nav>
       </div>
@@ -37,7 +54,7 @@
     <main>
       <%= yield %>
     </main>
-    <!--フッター-->
+
     <footer>
       <p>©︎2021 SummerTomato</p>
     </footer>

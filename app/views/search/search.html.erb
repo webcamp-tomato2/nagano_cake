@@ -1,0 +1,16 @@
+<!--検索結果-->
+<% if @records.empty? %>
+  <h2>該当する商品はありません</h2>
+<% end %>
+<!--datasはサーチコントローラで@datas = search_for(@how, @value)と定義-->
+<% @records.each do |data| %>
+  <div>
+    <!--対象データが入っているitem詳細へ飛ぶ-->
+    <%= link_to item_path(data.id) do %>
+      <!--データ-->
+      <%= attachment_image_tag data, :image, size: "190x150", class: "img_hover" %><br>
+    <% end %>
+    <p><%=  data.name %></p><br>
+    <p>￥<%= data.price %></p>
+  </div>
+<% end %>

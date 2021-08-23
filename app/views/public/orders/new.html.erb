@@ -10,11 +10,11 @@
   <br>
 
   <p>お届け先</p><br>
-  <!-- address_optionに情報を入れてコントローラに値（０，１，２）を送る
+  <!-- 新しいカラム作る！（address_option）
   ラジオボタンが一つしか選択できないように、labelは全部これ！ -->
   <%= f.radio_button :address_option, 0 %>
-  <!-- ordre_addressに情報を入れてコントローラに送る
-  ここに保存されたのが、配送先の住所→コントローラでorderモデルのカラムaddressに置き換える -->
+  <!-- またまた新しいカラム作成！（ordre_address）
+  ここに保存されたのが、配送先の住所 -->
   <%= f.label :order_address, "ご自身の住所" %><br>
   <%= current_customer.postal_code %>
   <%= current_customer.address %><br>
@@ -22,10 +22,8 @@
   <br>
 
   <%= f.radio_button :address_option, 1 %>
-  <!-- order_addressを使うと、”新しいお届け先”のaddress_orderと重複して上書きされてしまうから
-  order_address_idにする -->
-  <%= f.label :order_address_id, "登録済み住所から登録" %><br>
-  <%= f.collection_select :order_address_id , current_customer.addresses, :id, :address , :include_blank => "選択してください" %>
+  <%= f.label :order_address, "登録済み住所から登録" %><br>
+  <%= f.collection_select :order_address , current_customer.addresses, :id, :address , :include_blank => "選択してください" %>
   <br>
 
   <%= f.radio_button :address_option, 2 %>
@@ -41,6 +39,3 @@
   <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
 
 <% end %>
-
-
-
