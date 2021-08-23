@@ -4,12 +4,16 @@ class Item < ApplicationRecord
   has_many :order_details
 
   attachment :image
+  attachment :image
+  # validates :name, presence: true
+  # validates :image, presence: true
+  # validates :introduction, presence: true
+  # validates :price, presence: true
 
   # いらないかも
   def add_tax_price
     (self.price * 1.10).round
   end
-
   # selfはクラスメソッド
   # クラスメソッドはmodelクラスのレコードを検索するなどの用途や
   # 作成されたインスタンスの数を数えるなどのためのメソッド。
@@ -18,5 +22,4 @@ class Item < ApplicationRecord
     #.orを使用することで、contentに一致するカラムのデータをnameカラムとgenre_idカラムから探してきます。
     Item.where('name LIKE ?', '%'+content+'%').or(Item.where(genre_id: content))
   end
-
 end
