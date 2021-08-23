@@ -1,18 +1,59 @@
 <h2>商品一覧</h2>
 <!--１つの固まり-->
 <% @items.each do |item| %>
-<div class="row">
-  <div class="card" style="width: 280px;">
-    <!--画像-->
+  <div class="row">
+    <div class="card" style="width: 280px;">
+      <!--画像-->
       <%= link_to item_path(item) do %>
-        <div class="bd-placeholder-img card-img-top"><%= attachment_image_tag item, :image, format: 'jpeg', size: "280x280" %>
+        <div class="bd-placeholder-img card-img-top"><%= attachment_image_tag item, :image, format: 'jpeg', size: "280x280" %></div>
       <% end %>
-    <div class="card-body">
-      <h5 class="card-title"><%= item.name %></h5>
-      <p class="card-text">¥<%= item.price.to_s(:delimited) %></p>
+      <div class="card-body">
+        <h5 class="card-title"><%= item.name %></h5>
+        <p class="card-text">¥<%= item.price.to_s(:delimited) %></p>
+      </div>
     </div>
   </div>
+<% end %>
+
+<!--検索フォームをform_withで実装-->
+<div class="name-search">
+  <% if customer_signed_in? %>
+    <h5>商品名検索</h5>
+    <%= form_with url: search_search_path, method: :get, local: true do |f| %>
+      <!--フォームに打ち込まれた文字列をvalueとして送信-->
+      <%= f.text_field 'search[value]', size: "26x4", placeholder:"商品名を検索" %><br>
+      <span class="search-button col-xs-12 text-right">
+        <%= f.submit :"検索" %>
+      </span>
+    <% end %>
+  <% end %>
 </div>
 
-<% end %>
+
+<!--ジャンル検索-->
+<table class="table table-bordered genre-table">
+  <thead>
+    <tr>
+      <th>ジャンル検索</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @genres.each do |genre| %>
+      <tr>
+        <td>
+          <!--genre.nameをリンクにしてsearchアクションを実行-->
+          <!--第一引数、第二引数にvalueを定義してコントローラで必要な情報を受け取れるようにしている-->
+          <%= link_to genre.name, search_search_path('search[value]': genre.id) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+
+
+
 
