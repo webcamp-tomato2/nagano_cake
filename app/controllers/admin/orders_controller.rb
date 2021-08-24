@@ -14,10 +14,15 @@ class Admin::OrdersController < ApplicationController
 
 
     def update
-        order = Order.find(params[:id])
-        status = params[:order][:status].to_i
-        order.update(status: status)
-        redirect_to admin_order_path(order)
+        @order = Order.find(params[:id])
+        @status = params[:order][:status].to_i
+        @order.update(order_status_params)
+        redirect_to admin_order_path(@order)
     end
 
+    private
+
+    def order_status_params
+        params.require(:order).permit(:status)
+    end
 end
