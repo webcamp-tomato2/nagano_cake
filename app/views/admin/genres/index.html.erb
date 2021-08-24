@@ -9,6 +9,8 @@
       <tr>
         <td>ジャンル名</td>
         <td><%= f.text_field :name %></td>
+        <td><%= f.attachment_field :image %></td>
+        <td></td>
         <td><%= f.submit '新規登録',class:"btn btn-success" %></td>
       </tr>
     <% end %>
@@ -19,6 +21,7 @@
     <% @genres.each do |genre| %>
     <tr>
       <td><%= genre.name %></td>
+      <td><%= attachment_image_tag genre, :image, format: 'jpeg', size: "100x100" %></td>
       <td><%= link_to "編集する",edit_admin_genre_path(genre) %></td>
       <td><%= link_to "削除する",admin_genre_path(genre),method: :delete %></td>
     </tr>
