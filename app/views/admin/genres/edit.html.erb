@@ -1,19 +1,22 @@
-<h3>ジャンル編集</h3>
-<!--あとでbootstrapを実装-->
-<!--編集画面-->
-<%= form_with model: @genre,url: admin_genre_path(@genre), local:true do |f| %>
-<table>
-  <tbody>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h5>ジャンル編集</h5>
 
-    <tr>
-      <!--ジャンル名入力-->
+      <%= form_with model: @genre,url: admin_genre_path(@genre), local:true do |f| %>
 
-        <td>ジャンル名</td>
-        <td><%= f.text_field :name %></td>
-        <td><%= f.attachment_field :image %></td>
-        <td><%= f.submit '変更を保存',class:"btn btn-success" %></td>
+        <form class="form-horizontal">
 
-    </tr>
-  </tbody>
-</table>
-<% end %>
+          <div class="form-group">
+            <%= f.label :name, 'ジャンル名', class: "form-label, col-2" %>
+            <%= f.text_field :name, class: "form-control, col-2" %>
+            <%= f.attachment_field :image, class: "form-control, col-3" %>
+            <%= f.submit "変更を保存", class: "btn btn-info" %>
+          </div>
+
+        </form>
+
+      <% end %>
+    </div>
+  </div>
+</div>
