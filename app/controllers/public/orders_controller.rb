@@ -40,6 +40,7 @@ class Public::OrdersController < ApplicationController
         @order.shipping_cost = 800
         @cart_items = current_customer.cart_items
         @order.customer_id = current_customer.id
+
         #注文（order）を保存したときにcart_itemを空にするために、
         #cart_itemの情報をorder_detailに移す
         if @order.save
@@ -53,6 +54,7 @@ class Public::OrdersController < ApplicationController
                price: cart_item.add_tax_price
                )
            end
+
            #ここまででcart_itemの中身は全部移動できたから削除する
            @cart_items.destroy_all
            redirect_to orders_thanx_path
@@ -62,6 +64,7 @@ class Public::OrdersController < ApplicationController
 
     end
 
+
     def thanx
     end
     
@@ -70,12 +73,13 @@ class Public::OrdersController < ApplicationController
         @orders = current_customer.orders
     end
     
-    
+ 
     def show
-        @order = current_customer.orders
-        @order_details = @order.order_details
+        @order = current_customer.orders.find_by(params[:id])
+        @order.shipping_cost = 800
+        @order_detail = OrderDetail.find_by(params[:id])
     end
-    
+
     
     private
     
