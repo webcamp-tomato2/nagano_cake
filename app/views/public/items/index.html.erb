@@ -1,10 +1,8 @@
-<!--ジャンル検索-->
-<%= render 'public/items/genre', genres: @genres %>
-
-<h2>商品一覧</h2>
+<h5 class="title">商品一覧</h5>
 <!--１つの固まり-->
-<% @items.each do |item| %>
+
   <div class="row">
+    <% @items.each do |item| %>
     <div class="card" style="width: 280px;">
       <!--画像-->
       <%= link_to item_path(item) do %>
@@ -15,9 +13,11 @@
         <p class="card-text">¥<%= item.price.to_s(:delimited) %></p>
       </div>
     </div>
+    <% end %>
   </div>
-<% end %>
 
+<!--ジャンル検索-->
+<%= render 'public/items/genre', genres: @genres %>
 
 
 
