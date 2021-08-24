@@ -4,7 +4,7 @@ class Public::OrdersController < ApplicationController
     def new
         @order = Order.new
     end
-    
+
     def confirm
         @order = Order.new
         @cart_items = current_customer.cart_items
@@ -35,26 +35,50 @@ class Public::OrdersController < ApplicationController
         end
     end
 
-        def create
-            @order = Order.new(order_params)
-            @order.shipping_cost = 800
-            @order.customer_id = current_customer.id
-            @order.save!
-            redirect_to orders_thanx_path
+    def create
+        @order = Order.new(order_params)
+        @order.shipping_cost = 800
+        @cart_items = current_customer.cart_items
+        @order.customer_id = current_customer.id
+        #注文（order）を保存したときにcart_itemを空にするために、
+        #cart_itemの情報をorder_detailに移す
+        if @order.save
+            #cart_itemの中身を一つずつ取り出し、order_detailの対応するカラムに移していく
+            #書き方はseed.rbの書き方
+           @cart_items.each do |cart_item|
+             OrderDetail.create!(
+               amount: cart_item.amount,
+               item_id: cart_item.item_id,
+               order_id: @order.id,
+               price: cart_item.add_tax_price
+               )
+           end
+           #ここまででcart_itemの中身は全部移動できたから削除する
+           @cart_items.destroy_all
+           redirect_to orders_thanx_path
+        else
+           render :index
         end
 
-
+    end
 
     def thanx
     end
+    
+    
     def index
         @orders = current_customer.orders
     end
+    
+    
     def show
         @order = current_customer.orders
         @order_details = @order.order_details
     end
-private
+    
+    
+    private
+    
     def order_params
         params.require(:order).permit(:postal_code, :payment_method, :address, :total_payment, :name)
     end
