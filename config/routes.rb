@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'search/search'
   get root to: 'homes#top'
   get 'homes/about' => 'homes#about'
 
@@ -39,7 +40,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :destroy, :update]
     resources :orders, only: [:index, :show, :update]
-    resources :order_items, only: [:update]
+    resources :order_details, only: [:update]
   end
 
 end
