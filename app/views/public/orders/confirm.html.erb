@@ -22,7 +22,8 @@
         </tr>
       </table>
       <h3>請求額</h3>
-            <div class="col-6">
+      
+       <div class="col-6">
          <table class="table table-bordered">
 
         <tr>
@@ -37,7 +38,7 @@
         </tr>
         <tr>
          <th>請求額</th>
-          <td><%= (@total + @order.shipping_cost).to_i(:delimited) %></td>
+          <td><%= (@total + @order.shipping_cost).to_i %></td>
         </tr>
       </table>
       </div>
