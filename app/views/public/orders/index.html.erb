@@ -1,8 +1,31 @@
 <div class="container">
   <div class="row">
     <div class="col-8">
-        <h1>注文履歴一覧</h1>
+     
+    <h1>注文履歴一覧</h1>
+     <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>注文日</th>
+            <th>配送先</th>
+            <th>支払い金額</th>
+            <th>注文ステータス</th>
+            <th></th>
 
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.created_at.strftime("%Y年%m月%d日") %></td>
+            <td><%= order.postal_code + order.address %></td>
+            <td><%= order.total_payment %></td>
+            <td><%= order.status %></td>
+            <td><%= link_to "詳細ページ", order_path(current_customer) %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
 </div>
   </div>
     </div>
