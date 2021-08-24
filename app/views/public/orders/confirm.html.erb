@@ -1,59 +1,9 @@
 <div class="container">
   <div class="row">
-
+      <h6>注文情報の確認</h6>
     <div class="col-6">
-      <h2>注文の確認ページ</h2>
 
-      <table class="table table-bordered">
-        <tr>
-        <th>配送先(お届け先)</th>
-        <td>
-        <div><%= @order.address %></div>
-        <div><%= @order.name %></div>
-        </td>
-        </tr>
-        <tr>
-        <th>支払方法</th>
-         <td><%= @order.payment_method %></td>
-        </tr>
-        <tr>
-         <th>ステータス</th>
-          <td><%= @order.status %></td>
-        </tr>
-      </table>
-      <h3>請求額</h3>
-      
-       <div class="col-6">
-         <table class="table table-bordered">
-
-        <tr>
-        <th>送料</th>
-        <td>
-        <div><%= @order.shipping_cost %></div>
-        </td>
-        </tr>
-        <tr>
-        <th>商品合計金額</th>
-         <td><%= @total %>
-        </tr>
-        <tr>
-         <th>請求額</th>
-          <td><%= (@total + @order.shipping_cost).to_i %></td>
-        </tr>
-      </table>
-      </div>
-        <%= form_with model: @order, url: orders_path , method: :post, local: true do |f| %>
-        <%= f.hidden_field :postal_code, :value => @order.postal_code %>
-        <%= f.hidden_field :address, :value => @order.address %>
-        <%= f.hidden_field :name, :value => @order.name %>
-        <%= f.hidden_field :total_payment, :value => @total.to_i + @order.shipping_cost.to_i %>
-        <%= f.submit "注文完了", class: "btn btn-info" %>
-        <% end %>
-      </div>
-
-    <div class="col-5">
-      <h4>購入商品(内訳)</h4>
- <table class="table table-bordered">
+ 　　　<table class="table table-bordered">
         <thead>
           <th width="100">商品名</th>
           <th width="200">単価（税込み）</th>
@@ -72,8 +22,44 @@
             <% end %>
         </tbody>
       </table>
+   </div>
+    <div class="col-3">
+    <table class="table table-bordered">
 
+        <tr>
+        <th>送料</th>
+        <td>
+        <div><%= @order.shipping_cost %></div>
+        </td>
+        </tr>
+        <tr>
+        <th>商品合計金額</th>
+         <td><%= @total %>
+        </tr>
+        <tr>
+         <th>請求額</th>
+          <td><%= (@total + @order.shipping_cost).to_i %></td>
+        </tr>
+      </table>  
+      </div>
 
-    </div>
+        <div class="col-6">
+
+        <h6>支払方法</h6>
+         <%= @order.payment_method %>
+         
+　　　　<h6>配送先(お届け先)</h6>
+         <%= @order.address %>
+         <%= @order.name %>
+        
+          <%= form_with model: @order, url: orders_path , method: :post, local: true do |f| %>
+          <%= f.hidden_field :postal_code, :value => @order.postal_code %>
+          <%= f.hidden_field :address, :value => @order.address %>
+          <%= f.hidden_field :name, :value => @order.name %>
+          <%= f.hidden_field :total_payment, :value => @total.to_i + @order.shipping_cost.to_i %>
+          <%= f.submit "注文完了", class: "btn btn-info center-block" %>
+          <% end %>
+      </div>
   </div>
+</div>
 
