@@ -112,15 +112,25 @@
     color: gray;
   }
   /* 見出し */
+  // .title {
+  //   color: white;
+  //   font-family: serif;
+  //   margin: 100px auto 50px;
+  //   width: 130px;
+  //   text-align: center;
+  //   background: darkgrey;
+  //   padding: 0.5em;
+  //   border-radius: 20px;
+  // }
   .title {
-    color: white;
+    color: gray;
     font-family: serif;
     margin: 100px auto 50px;
-    width: 130px;
+    width: 200px;
     text-align: center;
-    background: darkgrey;
-    padding: 0.5em;
-    border-radius: 20px;
+    padding: 1rem 1rem;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
 
   }
 
