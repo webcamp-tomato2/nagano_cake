@@ -1,5 +1,6 @@
 class Public::CustomersController < ApplicationController
    before_action :authenticate_customer!
+   #before_action :reject_inactive_customer, only: [:create]
 
   def show
     @customer = current_customer
@@ -25,6 +26,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
+    @customer = Customer.find_by(: params[:name])
   end
   private
 

@@ -9,7 +9,7 @@ class Admin::OrdersController < ApplicationController
     def show
         @order = Order.find(params[:id])
         @order.shipping_cost = 800
-        @order_details = OrderDetail.all
+        @order_details = @order.order_details
     end
 
 
@@ -19,6 +19,13 @@ class Admin::OrdersController < ApplicationController
         @order.update(order_status_params)
         redirect_to admin_order_path(@order)
     end
+
+    def cus_index
+        #その注文をしたcustomer_idを持ってきたい
+        @orders = Order.where(customer_id: params[:customer_id])
+        #@orders = Customer.find(params[:customer_id]).orders
+    end
+
 
     private
 
