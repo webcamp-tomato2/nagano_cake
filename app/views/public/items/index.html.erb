@@ -1,3 +1,7 @@
+<div class="about_img__inner">
+  <%= image_tag"img/cake3.jpeg",class:"about-img rounded"%>
+</div>
+
 <h5 class="title">商品一覧</h5>
 <!--１つの固まり-->
 <div class="container">
@@ -6,7 +10,7 @@
     <div class="card m-2" style="width: 270px;">
       <!--画像-->
       <%= link_to item_path(item) do %>
-        <div class="bd-placeholder-img card-img-top"><%= attachment_image_tag item, :image, format: 'jpeg', size: "270x270",class: "item-img" %></div>
+        <%= attachment_image_tag item, :image, format: 'jpeg', size: "270x270",class: "item-img card-img-top" %>
       <% end %>
       <div class="card-body">
         <h5 class="card-title"><%= item.name %></h5>

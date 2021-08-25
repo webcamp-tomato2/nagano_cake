@@ -1,8 +1,14 @@
-<!-- トップ画面 -->
+
 <!--メイン画像-->
 <div class="img__inner">
   <!--JS設定してから画像追加-->
   <%= image_tag"img/cake1.jpeg",class:"main-img"%>
+  <%= image_tag"img/cake2.jpeg",class:"main-img"%>
+  <%= image_tag"img/cake3.jpeg",class:"main-img"%>
+  <%= image_tag"img/cake4.jpeg",class:"main-img"%>
+  <%= image_tag"img/cake6.jpeg",class:"main-img"%>
+
+
 </div>
 
 <div class="flame-image">
@@ -17,13 +23,13 @@
 
 <h5 class="title">new arrival</h5>
 <div class="container">
-  <div class="row">
+  <div class="row mr-5 ml-5">
     <% @items.each do |item| %>
     <div class="col-sm">
       <!--genre.nameをリンクにしてsearchアクションを実行-->
       <!--第一引数、第二引数にvalueを定義してコントローラで必要な情報を受け取れるようにしている-->
       <%= link_to item_path(item) do %>
-        <%= attachment_image_tag item, :image, format: 'jpeg', size: "200x200",class: "item-img" %>
+        <%= attachment_image_tag item, :image, format: 'jpeg', size: "200x200",class: "top-item-img rounded" %>
       <% end %><br />
       <!--%= item.name %>-->
     </div>
