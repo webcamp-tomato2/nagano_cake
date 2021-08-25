@@ -17,6 +17,7 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+
   * {
     padding: 0;
     margin: 0;
@@ -60,7 +61,7 @@
 
   .img__inner {
     width: 100%;
-    height: 700px;
+    height: 900px;
     margin: 0 auto;
     overflow: hidden;
     position: relative;
@@ -68,16 +69,24 @@
   .about_img__inner {
     width: 700px;
     height: 500px;
-    margin: 50px auto 0px;
+    margin: 100px auto 0px;
     overflow: hidden;
     position: relative;
   }
+
+  main{
+    margin-bottom: 100px;
+  }
+
   .main-img {
     width: 100%;
     position: absolute;
-    top: 0;
+    top: -100px;
     left: 0;
+    /*透明度*/
+    /*あとで0に変える*/
     opacity: 1;
+    /*変化するまでの時間を設定する*/
     transition: all 1s;
   }
   .current-img {
@@ -88,35 +97,25 @@
     /*変化するまでの時間を設定する*/
     transition: all 1s;
   }
-  .about-img {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    /*透明度*/
-    /*あとで0に変える*/
-    opacity: 1;
-    /*変化するまでの時間を設定する*/
-    transition: all 1s;
+  // トップ、アバウト以外の画像
+  .item-img{
+    object-fit: cover;
   }
-  .current-img {
-    /*透明度*/
-    opacity: 1;
-    /*要素の重なりについて指定する*/
-    z-index: 20;
-  }
+
+  // topページ本文
+  // いらないかも
   .text {
     text-align: center;
-    padding: 80px 0 40px;
+    padding: 100px 0 40px;
   }
   .text p {
     color: gray;
   }
-  /* 新着商品 */
+  /* 見出し */
   .title {
     color: white;
     font-family: serif;
-    margin: 30px auto 30px;
+    margin: 100px auto 50px;
     width: 130px;
     text-align: center;
     background: darkgrey;
@@ -124,32 +123,11 @@
     border-radius: 20px;
 
   }
-  .items {
-    width: 70%;
-    margin: 0 auto;
-    position: relative;
-    text-align: center;
-    justify-content: center;
-    padding-bottom: 100px;
-    display: flex;
-  }
-  .new-items{
-    display: block;
-    margin: 0 10px;
-  }
-  .new-items p{
-    margin: 10px 0;
-    color: gray;
-  }
 
-  .img {
-    width: 150px;
-    height: 150px;
-  }
   .flame-image {
     position: relative;
     width: 600px;
-    margin: 50px auto;
+    margin: 100px auto 0;
   }
   .flame-image img{
     width: 100%;
@@ -165,7 +143,7 @@
   /* フッター */
   footer {
     background-color: darkgray;
-    height: 60px;
+    height: 70px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -177,6 +155,4 @@
     margin: auto;
   }
 
-  /*  */
-  /*  */
-  /* 以下レスポンシブ対応記述？ */
+
