@@ -1,58 +1,63 @@
 <div class="container">
   <div class="row">
     <div class="col-10, mx-auto, container-fluid">
-      <h2><%= @customer.full_name %>さんの会員詳細</h2>
+      <h5 class="title3"><%= @customer.full_name %>さんの会員詳細</h5>
 
         <%= form_with model: @customer, url: admin_customer_path(@customer), local: true do |f| %>
 
-        <div class="form-group col-9">
-          <%= f.label :"会員ID" %>
-          <%= f.label :"#{@customer.id}" %>
-        </div>
+          <form class="form-horizontal">
 
-          <div class="form-group col-9">
-            <%= f.label :氏名 %>
-            <%= f.text_field :last_name %>
-            <%= f.text_field :first_name %>
-          </div>
+            <div class="form-group col-9">
+              <%= f.label "会員ID" %>
+              <%= f.label :"#{@customer.id}" %>
+            </div>
 
-          <div class="form-control, col-9">
-            <%= f.label :フリガナ %>
-            <%= f.text_field :last_name_kana %>
-            <%= f.text_field :first_name_kana %>
-          </div>
+            <div class="form-group col-9">
+              <%= f.label "氏名", class: "form-label, col-3" %>
+              <%= f.text_field :last_name, class: "form-control, col-4" %>
+              <%= f.text_field :first_name, class: "form-control, col-4" %>
+            </div>
 
-          <div class="form-control, col-9">
-            <%= f.label :郵便番号 %>
-            <%= f.text_field :postal_code %>
-          </div>
+            <div class="form-control, col-9">
+              <%= f.label "フリガナ", class: "form-label, col-3" %>
+              <%= f.text_field :last_name_kana, class: "form-control, col-4" %>
+              <%= f.text_field :first_name_kana, class: "form-control, col-4" %>
+            </div>
 
-          <div class="form-control, col-9">
-            <%= f.label :住所 %>
-            <%= f.text_field :address %>
-          </div>
+            <div class="form-control, col-9">
+              <%= f.label "郵便番号", class: "form-label, col-3" %>
+              <%= f.text_field :postal_code, class: "form-control, col-4" %>
+            </div>
 
-          <div class="form-control, col-9">
-            <%= f.label :電話番号 %>
-            <%= f.text_field :telephone_number %>
-          </div>
+            <div class="form-control, col-9">
+              <%= f.label :住所, class: "form-label, col-3" %>
+              <%= f.text_field :address, class: "form-control, col-4" %>
+            </div>
 
-          <div class="form-control, col-9">
-            <%= f.label :メールアドレス %>
-            <%= f.text_field :email %>
-          </div>
+            <div class="form-control, col-9">
+              <%= f.label "電話番号", class: "form-label, col-3" %>
+              <%= f.text_field :telephone_number, class: "form-control, col-4" %>
+            </div>
 
-          <div class="form-control, col-9">
-            <p>会員ステータス<p>
+            <div class="form-control, col-9">
+              <%= f.label "メールアドレス", class: "form-label, col-3" %>
+              <%= f.text_field :email, class: "form-control, col-4" %>
+            </div>
+
+            <div class="form-control, col-9">
+              <%= f.label :is_deleted, "会員ステータス", class: "form-label, col-3" %>
               <%= f.radio_button :is_deleted, value: false %>
               <%= f.label :is_deleted, '有効', value: false %>
               <%= f.radio_button :is_deleted, value: true %>
               <%= f.label :is_deleted, '退会', value: true %>
-          </div>
+            </div>
 
-          <%= f.submit "変更を保存", class: "btn btn-success" %>
+            <%= f.submit "変更を保存", class: "btn btn-info" %>
+
+          </form>
+
         <% end %>
-      </div>
+
     </div>
   </div>
 </div>

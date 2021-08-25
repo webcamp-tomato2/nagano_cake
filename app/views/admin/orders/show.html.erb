@@ -1,10 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-8">
+    <h5 class="title2">注文商品詳細</h5>
+  </div>
+
+  <div class="row">
+    <div class="col-8 mb-5">
+
       <table>
         <tr>
-          <td>購入者</td>
-          <td><%= link_to @order.customer.full_name, admin_customer_path(@order.customer) %></td>
+          <td style="width: 10%">購入者</td>
+          <td style="width: 35%"><%= link_to @order.customer.full_name, admin_customer_path(@order.customer) %></td>
         </tr>
         <tr>
           <td>注文日</td>
