@@ -57,73 +57,65 @@
     margin: auto 10px;
     font-size: 16px;
   }
-  /* メイン*/
-
+  // application.html全体にかかっている
+  main{
+    margin-bottom: 100px;
+  }
+  // トップ画像
   .img__inner {
     width: 100%;
-    height: 900px;
+    height: 700px;
     margin: 0 auto;
     overflow: hidden;
     position: relative;
   }
-  .about_img__inner {
-    width: 700px;
-    height: 500px;
-    margin: 100px auto 0px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  main{
-    margin-bottom: 100px;
-  }
-
   .main-img {
     width: 100%;
     position: absolute;
-    top: -100px;
+    top: -160px;
     left: 0;
     /*透明度*/
-    /*あとで0に変える*/
-    opacity: 1;
+    opacity: 0;
     /*変化するまでの時間を設定する*/
     transition: all 1s;
   }
   .current-img {
     opacity: 1;
-    /*透明度*/
-    /*あとで0に変える*/
-    opacity: 1;
-    /*変化するまでの時間を設定する*/
-    transition: all 1s;
+    z-index: 20;
   }
-  // トップ、アバウト以外の画像
+  // アバウト画像
+  .about_img__inner {
+    width: 700px;
+    height: 400px;
+    margin: 100px auto 0px;
+    overflow: hidden;
+    position: relative;
+  }
+  .about-img {
+    width: 100%;
+    position: absolute;
+    top: -80px;
+  }
+  // トップ(メイン)、アバウト以外の画像
   .item-img{
     object-fit: cover;
   }
-
-  // topページ本文
-  // いらないかも
-  .text {
-    text-align: center;
-    padding: 100px 0 40px;
+  .top-item-img{
+    object-fit: cover;
+    margin-bottom: 10px;
   }
-  .text p {
-    color: gray;
-  }
-  /* 見出し */
+  // 各ページのタイトル
   .title {
-    color: white;
+    color: gray;
     font-family: serif;
     margin: 100px auto 50px;
-    width: 130px;
+    width: 200px;
     text-align: center;
-    background: darkgrey;
-    padding: 0.5em;
-    border-radius: 20px;
-
+    padding: 1rem 1rem;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
   }
-
+  // トップ・アバウトで使用している枠と文字
   .flame-image {
     position: relative;
     width: 600px;
@@ -180,7 +172,11 @@
     border-radius: 20px;
   }
 
-  /*  */
-  /*  */
-  /* 以下レスポンシブ対応記述？ */
+  // テーブルの横幅を変えたい時
+  // .table-nonfluid{
+  //   width: 80%;
+  //   margin: 0 auto;
+  // }
+
+
 
