@@ -1,6 +1,5 @@
 class Public::CustomersController < ApplicationController
    before_action :authenticate_customer!
-   #before_action :reject_inactive_customer, only: [:create]
 
   def show
     @customer = current_customer
@@ -18,7 +17,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
-    @customer = Customer.find_by(params[:id])
+    @customer = current_customer
     @customer.update(is_deleted: true)
     reset_session
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしておりますと見せかけてー！ありがとうございました！。"
