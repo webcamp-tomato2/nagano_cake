@@ -1,20 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h5>ジャンル一覧・追加</h5>
+      <h5 class="title3">ジャンル一覧・追加</h5>
 
       <%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
 
-        <form class="form-horizontal">
+
 
           <div class="form-group">
-            <%= f.label :name, 'ジャンル名', class: "form-label, col-2" %>
+            <%= f.label :name, 'ジャンル名', class: "form-label, col-1.5" %>
             <%= f.text_field :name, class: "form-control, col-2" %>
-            <%= f.attachment_field :image, class: "form-control, col-3" %>
+            <%= f.attachment_field :image, class: "form-control, col-4" %>
             <%= f.submit "新規登録", class: "btn btn-info" %>
           </div>
 
-        </form>
+
 
       <% end %>
     </div>

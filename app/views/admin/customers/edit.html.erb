@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-10, mx-auto, container-fluid">
-      <h2><%= @customer.full_name %>さんの会員詳細</h2>
+      <h5 class="title3"><%= @customer.full_name %>さんの会員詳細</h5>
 
         <%= form_with model: @customer, url: admin_customer_path(@customer), local: true do |f| %>
 
@@ -52,7 +52,7 @@
               <%= f.label :is_deleted, '退会', value: true %>
             </div>
 
-            <%= f.submit "変更を保存", class: "btn btn-success" %>
+            <%= f.submit "変更を保存", class: "btn btn-info" %>
 
           </form>
 

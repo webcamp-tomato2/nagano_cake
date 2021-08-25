@@ -177,6 +177,31 @@
     margin: auto;
   }
 
+
+  /* おみそ追記　adminのtitle 短めのやつ */
+  .title2 {
+    color: white;
+    font-family: serif;
+    margin: 30px 30px;
+    width: 130px;
+    text-align: center;
+    background: darkgrey;
+    padding: 0.5em;
+    border-radius: 20px;
+  }
+
+  /* おみそ追記　adminのtitle 長めのやつ */
+   .title3 {
+    color: white;
+    font-family: serif;
+    margin: 30px 20px;
+    width: 250px;
+    text-align: center;
+    background: darkgrey;
+    padding: 0.5em;
+    border-radius: 20px;
+  }
+
   /*  */
   /*  */
   /* 以下レスポンシブ対応記述？ */
