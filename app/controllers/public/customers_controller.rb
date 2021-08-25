@@ -2,15 +2,19 @@ class Public::CustomersController < ApplicationController
    before_action :authenticate_customer!
 
   def show
-    @user = current_customer
+    @customer = current_customer
   end
-  
+
   def edit
-    @user = current_customer
-  end 
+    @customer = current_customer
+  end
 
   def update
-  end 
+    @customer = current_customer
+    @customer.update(customer_params)
+    redirect_to customers_path
+
+  end
 
   def withdraw
     @customer = Customer.find_by(params[:id])
@@ -22,7 +26,10 @@ class Public::CustomersController < ApplicationController
 
   def unsubscribe
   end
-  
-  
-  
+  private
+
+  def customer_params
+    params.require(:customer).permit(:last_name,:first_name,:last_name_kana,:first_name_kana,:postal_code,:address,:telephone_number,:email)
+  end
+
 end
