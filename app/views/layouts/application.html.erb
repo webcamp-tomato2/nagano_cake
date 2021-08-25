@@ -34,7 +34,7 @@
               <li><%= link_to " 商品一覧", items_path, class: 'nav-list-item' %></li>
               <li><%= link_to ' 新規登録', new_customer_registration_path, class: 'nav-list-item' %></li>
               <li><%= link_to ' ログイン', new_customer_session_path, class: 'nav-list-item' %></li>
-              <% end %>     
+              <% end %>
                 <!--検索フォームをform_withで実装-->
                 <div class="name-search">
                   <% if customer_signed_in? %>
@@ -53,7 +53,9 @@
       </div>
     </header>
     <main>
-      <%= yield %>
+
+        <%= yield %>
+
     </main>
 
     <footer>

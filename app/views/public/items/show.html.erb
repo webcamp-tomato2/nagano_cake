@@ -4,11 +4,8 @@
 <div class="mx-auto" style="width: 280px;">
   <div class="p-2 mb-2 bg-info text-white rounded" style="width: 80px;"><%= @item.genre.name %></div>
   <%= @item.name %>
-
-
-
   <!--こちらの書き方に変更-->
-  <%= attachment_image_tag @item, :image, format: 'jpeg', size: "280x280" %>
+  <%= attachment_image_tag @item, :image, format: 'jpeg', size: "280x280",class: "item-img" %>
     <div>
       <%= @item.introduction %>
     </div>

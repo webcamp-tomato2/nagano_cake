@@ -1,12 +1,12 @@
 <h5 class="title">商品一覧</h5>
 <!--１つの固まり-->
-
+<div class="container">
   <div class="row">
     <% @items.each do |item| %>
-    <div class="card" style="width: 280px;">
+    <div class="card m-2" style="width: 270px;">
       <!--画像-->
       <%= link_to item_path(item) do %>
-        <div class="bd-placeholder-img card-img-top"><%= attachment_image_tag item, :image, format: 'jpeg', size: "280x280" %></div>
+        <div class="bd-placeholder-img card-img-top"><%= attachment_image_tag item, :image, format: 'jpeg', size: "270x270",class: "item-img" %></div>
       <% end %>
       <div class="card-body">
         <h5 class="card-title"><%= item.name %></h5>
@@ -15,6 +15,7 @@
     </div>
     <% end %>
   </div>
+</div>
 
 <!--ジャンル検索-->
 <%= render 'public/items/genre', genres: @genres %>
