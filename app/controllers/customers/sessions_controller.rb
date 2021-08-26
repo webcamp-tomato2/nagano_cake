@@ -38,9 +38,8 @@ protected
   def reject_customer
     @customer = Customer.find_by(email: params[:customer][:email])
     if @customer
-      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == false)
+      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
         flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
-        raise
         redirect_to new_customer_registration
       else
         flash[:notice] = "項目を入力してください"

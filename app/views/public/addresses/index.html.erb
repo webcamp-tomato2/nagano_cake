@@ -4,7 +4,7 @@
   <div class="row w-25 mx-auto">
     <div class="col">
       <table>
-        <%= form_with model: @address,local: true do |f| %>
+        <%= form_with model: @address,url: addresses_path(@address),method: :post,local: true do |f| %>
           <tbody>
             <tr>
               <td>郵便番号</td>
