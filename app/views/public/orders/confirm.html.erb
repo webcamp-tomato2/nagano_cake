@@ -52,7 +52,7 @@
   <div class="row">
     <div class="col-2">配送先(お届け先)</div>
     <div class="col-10">
-      <%= @order.address %>
+      <%= @order.postal_code %> <%= @order.address %>
       <%= @order.name %>
       <%= form_with model: @order, url: orders_path , method: :post, local: true do |f| %>
         <%= f.hidden_field :postal_code, :value => @order.postal_code %>

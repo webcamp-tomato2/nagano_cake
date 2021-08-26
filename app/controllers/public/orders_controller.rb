@@ -21,6 +21,7 @@ class Public::OrdersController < ApplicationController
             #newページから送られてきた情報をOrderモデルのカラムを使って置き換える
             @order.postal_code = current_customer.postal_code
             @order.address = current_customer.address
+            @order.name = current_customer.full_name
         elsif params[:order][:address_option] == "1"
             #モデルに乗ってやってきた住所（order_address_id）を数値で取得してaddressモデルから登録済みの住所を引っ張ってくる
             @sta = params[:order][:order_address_id].to_i
@@ -32,6 +33,7 @@ class Public::OrdersController < ApplicationController
         elsif params[:order][:address_option] == "2"
             @order.postal_code = params[:order][:postal_code]
             @order.address = params[:order][:order_address]
+            @order.name = @order_address.name
         end
     end
 
