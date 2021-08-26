@@ -92,9 +92,9 @@
     </header>
 
     <main>
-
-        <%= yield %>
-
+      <%= flash[:notice] %>
+      <%= flash[:error] %>
+      <%= yield %>
     </main>
 
     <footer class="footer">

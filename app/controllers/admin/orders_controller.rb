@@ -2,23 +2,17 @@ class Admin::OrdersController < ApplicationController
     before_action :authenticate_admin!
 
     def index
-        @orders = Order.all
+        @orders = Order.all.order(created_at: "DESC")
     end
 
-
     def show
-        @order = Order.find(params[:id])
+        @order = current_customer.orders.find_by(params[:id]) 
         @order.shipping_cost = 800
+        #@order_detail = OrderDetail.find_by(params[:id])
         @order_details = @order.order_details
     end
 
-
     def update
-        # @order = Order.find(params[:id])
-        # @status = params[:order][:status].to_i
-        # @order.update(order_status_params)
-        # redirect_to admin_order_path(@order)
-
         @order = Order.find(params[:id])
         @order_status = params[:order][:order_status].to_i
         @order.update(status: @order_status)
@@ -33,7 +27,7 @@ class Admin::OrdersController < ApplicationController
 
     def cus_index
         #その注文をしたcustomer_idを持ってきたい
-        @orders = Order.where(customer_id: params[:customer_id])
+        @orders = Order.where(customer_id: params[:customer_id]).order(created_at: "DESC")
         #@orders = Customer.find(params[:customer_id]).orders
     end
 

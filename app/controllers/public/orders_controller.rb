@@ -14,9 +14,7 @@ class Public::OrdersController < ApplicationController
         @order.customer_id = current_customer.id
         #配送料は800円。決まっているものはコントローラで定義。
         @order.shipping_cost = 800
-        @cart_items = current_customer.cart_items.all
         @total = @cart_items.inject(0) { |sum, item| sum + item.sub_price }
-
         if params[:order][:address_option] == "0"
             #newページから送られてきた情報をOrderモデルのカラムを使って置き換える
             @order.postal_code = current_customer.postal_code
@@ -33,9 +31,13 @@ class Public::OrdersController < ApplicationController
         elsif params[:order][:address_option] == "2"
             @order.postal_code = params[:order][:postal_code]
             @order.address = params[:order][:order_address]
-            @order.name = @order_address.name
+            @order.name = params[:order][:name]
+        else
+            render :new
+            flash.now[:notice] = "住所を入力してください"
         end
     end
+
 
     def create
         @order = Order.new(order_params)
@@ -72,22 +74,20 @@ class Public::OrdersController < ApplicationController
 
 
     def index
-        @orders = current_customer.orders
+        @orders = current_customer.orders.order(created_at: "DESC")
     end
 
 
     def show
-        #@order = current_customer.orders.find_by(params[:id])
-        #@order = current_customer.order
+
         @order = Order.find(params[:id])
         @order.shipping_cost = 800
-        #@order_detail = OrderDetail.find_by(params[:id])
         @order_details = @order.order_details
     end
 
 
     private
-
+   
     def order_params
         params.require(:order).permit(:postal_code, :payment_method, :address, :total_payment, :name)
     end
