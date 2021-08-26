@@ -6,7 +6,7 @@ class Admin::OrdersController < ApplicationController
     end
 
     def show
-        @order = current_customer.orders.find_by(params[:id]) 
+        @order = Order.find(params[:id])
         @order.shipping_cost = 800
         #@order_detail = OrderDetail.find_by(params[:id])
         @order_details = @order.order_details
