@@ -13,9 +13,6 @@ class Admin::OrdersController < ApplicationController
     end
 
     def update
-        # @order = Order.find(params[:id])
-        # @order_detail = @order.order_details
-        # @status = params[:order][:status].to_i
         @order = Order.find(params[:id])
         @order_status = params[:order][:order_status].to_i
         @order.update(status: @order_status)

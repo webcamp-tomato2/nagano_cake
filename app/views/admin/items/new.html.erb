@@ -28,12 +28,12 @@
 
         <div class="form-group">
           <%= f.label :price, '税込価格', class: "form-label, col-2" %>
-          <%= f.text_field :price, class: "form-control, col-2" %>円
+          \<%= f.text_field :price, class: "form-control, col-2" %>
         </div>
 
         <div class="form-group">
           <%= f.label :is_active, '販売ステータス', class: "form-label, col-2" %>
-          <%= f.select :is_active, [['販売中', true], ['販売停止', false]], include_blank: "選択してください", class: "form-control, col-4" %>円
+          <%= f.select :is_active, [['販売中', true], ['販売停止', false]], include_blank: "選択してください", class: "form-control, col-4" %>
         </div>
 
         <div class="actions">
