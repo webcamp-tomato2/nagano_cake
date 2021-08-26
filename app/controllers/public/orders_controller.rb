@@ -67,22 +67,25 @@ class Public::OrdersController < ApplicationController
 
     def thanx
     end
-    
-    
+
+
     def index
         @orders = current_customer.orders
     end
-    
- 
+
+
     def show
-        @order = current_customer.orders.find_by(params[:id])
+        #@order = current_customer.orders.find_by(params[:id])
+        #@order = current_customer.order
+        @order = Order.find(params[:id])
         @order.shipping_cost = 800
-        @order_detail = OrderDetail.find_by(params[:id])
+        #@order_detail = OrderDetail.find_by(params[:id])
+        @order_details = @order.order_details
     end
 
-    
+
     private
-    
+
     def order_params
         params.require(:order).permit(:postal_code, :payment_method, :address, :total_payment, :name)
     end

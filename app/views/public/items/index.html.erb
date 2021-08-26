@@ -20,6 +20,7 @@
     <% end %>
   </div>
 </div>
+<%= paginate @items %>
 
 <!--ジャンル検索-->
 <%= render 'public/items/genre', genres: @genres %>
