@@ -27,36 +27,40 @@
   }
 
   /* ヘッダー*/
-  header {
-    background-color: darkgray;
-    height: 70px;
-    width: 100%;
-  }
-  .header-area {
-    width: 90%;
-    display: flex;
-    align-items: center;
-  }
-  .logo {
-    height: 60px;
-    position: relative;
-    left: 20%;
-    top: 5px;
-  }
-  /* ヘッダーリスト */
-  nav {
-    margin: 0 0 0 auto;
-  }
-  ul {
-    list-style: none;
-    margin: 0;
-    display: flex;
-  }
-  .nav-list-item {
-    color: #fafafa;
-    margin: auto 10px;
-    font-size: 16px;
-  }
+  // header {
+  //   background-color: darkgray;
+  //   height: 70px;
+  //   width: 100%;
+  // }
+  // .header-area {
+  //   width: 90%;
+  //   display: flex;
+  //   align-items: center;
+  // }
+  // .logo {
+  //   height: 60px;
+  //   position: relative;
+  //   left: 20%;
+  //   top: 5px;
+  // }
+  // /* ヘッダーリスト */
+  // nav {
+  //   margin: 0 0 0 auto;
+  // }
+  // ul {
+  //   list-style: none;
+  //   margin: 0;
+  //   display: flex;
+  // }
+  // .nav-list-item {
+  //   color: #fafafa;
+  //   margin: auto 10px;
+  //   font-size: 16px;
+  // }
+
+
+
+
   // application.html全体にかかっている
   main{
     margin-bottom: 100px;
@@ -132,20 +136,29 @@
     right: 10%;
     left: 10%;
   }
-  /* フッター */
-  footer {
-    background-color: darkgray;
-    height: 70px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 
-  footer p {
-    color: white;
-    margin: auto;
+  .flame-image h4{
+    color: darkgray;
+    position: absolute;
+    text-align: center;
+    top: 40%;
+    right: 10%;
+    left: 10%;
   }
+  /* フッター */
+  // footer {
+  //   background-color: darkgray;
+  //   height: 70px;
+  //   width: 100%;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  // }
+
+  // footer p {
+  //   color: white;
+  //   margin: auto;
+  // }
 
 
   /* おみそ追記　adminのtitle 短めのやつ */
@@ -178,5 +191,24 @@
   //   margin: 0 auto;
   // }
 
+  /*ページネーション自体のデザイン*/
+  .pagination {
+    justify-content: center;
+  }
+  .pagination>li>a {
+    border: none;     /*枠線をなくす*/
+    color: #696969;   /*文字の色を変える*/
+  }
+
+  /* 表示しているページ番号のデザイン */
+  .pagination>.active>a {
+    background: #93c9ff;     /*背景の色を変える*/
+    border-radius: 15px;     /*角を丸くする*/
+  }
+
+  /*ホバー時のデザイン*/
+  .pagination>li>a:hover {
+    border-radius: 15px;    /*角を丸くする*/
+  }
 
 

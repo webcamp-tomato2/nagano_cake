@@ -60,4 +60,6 @@ gem 'devise-bootstrap-views', '~> 1.0'
 
 gem 'byebug'
 gem 'pry-rails'
+gem 'kaminari'
+
 

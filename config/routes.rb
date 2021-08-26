@@ -21,8 +21,8 @@ Rails.application.routes.draw do
     patch '/customers/withdraw' => 'customers#withdraw', as: 'customers_withdraw'
 
     resources :items, only: [:index, :show]
-    get 'orders/thanx' => 'orders#thanx'
     post 'orders/confirm' => 'orders#confirm'
+    get 'orders/thanx' => 'orders#thanx'
     resources :orders, only: [:new, :index, :show, :create]
 
 
