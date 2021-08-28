@@ -3,8 +3,7 @@ https://drive.google.com/file/d/1eCC5p7HHCkqnWdUhp9xdOSPWEkz0d4wM/view?usp=shari
 アプリケーション詳細設計のURL  
 https://docs.google.com/spreadsheets/d/1mIs1ZMuQtYb6D8CMSnC-SjZA1VbrMWngGfWUokgkBjM/edit?usp=sharing  
 テーブル定義書のURL  
-https://docs.google.com/spreadsheets/d/1N2_gc0BUmComCxo0tiIlowK0EzGAcyrykCpXTs1oBKM/edit?usp=sharing  
-
+https://docs.google.com/spreadsheets/d/1N2_gc0BUmComCxo0tiIlowK0EzGAcyrykCpXTs1oBKM/edit?usp=sharing  a
 
 機能面  
 
@@ -36,16 +35,17 @@ https://docs.google.com/spreadsheets/d/1N2_gc0BUmComCxo0tiIlowK0EzGAcyrykCpXTs1o
   
   
   
-★言語とフレームワーク  
+★言語とフレームワーク★  
 version  
-Ruby 2.6.3  
-Rails 5.2.5  
+Ruby (2.6.3)  
+Rails (5.2.5) 
 HTML5  
 SCSS  
 jQuery  
-  
-★Gem　一覧  
-  
+javascript  
+   
+★Gem　一覧★    
+    
 devise  
 bootstrap5  
 refile  
@@ -55,3 +55,7 @@ font-awesome-sass
 kaminari   
 byebug   
   
+★ 開発者★  
+・おみそさん  
+・みさみささん  
+・nissy  
