@@ -37,7 +37,8 @@
       <% end %>
     </thread>
   </table>
+  
   <div><%= link_to "買い物を続ける",root_path, class: "btn btn-outline-info mb-3" %></div>
-  <div>合計金額　 \<%= @total.round.to_s(:delimited) %></div>
+  <div>合計金額　 ¥<%= @total.round.to_s(:delimited) %></div>
   <div><%= link_to "情報入力にすすむ", new_order_path, class:"btn btn-outline-info float-right btn-lg" %></div>
 </div>

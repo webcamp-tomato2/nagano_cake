@@ -1,5 +1,6 @@
 class Admin::GenresController < ApplicationController
   before_action :authenticate_admin!
+  
   def index
     @genres = Genre.all
     @genre = Genre.new
@@ -16,6 +17,7 @@ class Admin::GenresController < ApplicationController
   def edit
     @genre = Genre.find(params[:id])
   end
+
 
   def destroy
     @genre = Genre.find(params[:id])

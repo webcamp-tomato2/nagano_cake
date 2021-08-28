@@ -33,7 +33,7 @@ class Customers::SessionsController < Devise::SessionsController
   #     new_customer_registration_path
   #     end
   # end
-protected
+  protected
 
   def reject_customer
     @customer = Customer.find_by(email: params[:customer][:email])
