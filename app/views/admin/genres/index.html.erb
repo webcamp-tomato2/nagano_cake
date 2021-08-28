@@ -1,28 +1,48 @@
-<h3>ジャンル一覧・追加</h3>
-<!--あとでbootstrapを実装-->
-<table>
-  <tbody>
-    <!--新規入力-->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h5 class="title3">ジャンル一覧・追加</h5>
 
-    <!--ジャンル名入力-->
-    <%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
-      <tr>
-        <td>ジャンル名</td>
-        <td><%= f.text_field :name %></td>
-        <td><%= f.submit '新規登録',class:"btn btn-success" %></td>
-      </tr>
-    <% end %>
-    <!--一覧-->
-    <tr>
-      <th><strong>ジャンル</strong></th>
-    </tr>
-    <% @genres.each do |genre| %>
-    <tr>
-      <td><%= genre.name %></td>
-      <td><%= link_to "編集する",edit_admin_genre_path(genre) %></td>
-      <td><%= link_to "削除する",admin_genre_path(genre),method: :delete %></td>
-    </tr>
-    <% end %>
-    </tr>
-  </tbody>
-</table>
+      <%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
+
+
+
+          <div class="form-group">
+            <%= f.label :name, 'ジャンル名', class: "form-label, col-1.5" %>
+            <%= f.text_field :name, class: "form-control, col-2" %>
+            <%= f.attachment_field :image, class: "form-control, col-4" %>
+            <%= f.submit "新規登録", class: "btn btn-info" %>
+          </div>
+
+
+
+      <% end %>
+    </div>
+  </div>
+
+      <!--一覧-->
+  <div class="row">
+    <div class="col-6">
+
+      <table class="table">
+        <tr class="thead-light">
+          <th><strong>ジャンル</strong></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <% @genres.each do |genre| %>
+        <tr>
+          <td><%= genre.name %></td>
+          <td><%= attachment_image_tag genre, :image, format: 'jpeg', size: "100x100" %></td>
+          <td><%= link_to "編集する",edit_admin_genre_path(genre), class: "btn btn-primary" %></td>
+          <td><%= link_to "削除する",admin_genre_path(genre),method: :delete, class: "btn btn-success" %></td>
+        </tr>
+        <% end %>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+</div>
+

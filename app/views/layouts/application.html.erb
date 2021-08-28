@@ -4,42 +4,102 @@
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
 
+    <!--今回はつかっていません-->
+    <!--<link rel="stylesheet" href="css/skippr.css" />-->
+    <!--<link rel="stylesheet" href="css/style.css" />-->
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <!-- js読み込む(訂正の可能性あります) -->
-    <!--<script src="jquery.min.js"></script>-->
-    <!--<script src="app.js"></script>-->
-    <!--ヘッダー-->
+    <script src="js/jquery.min.js"></script>
+    <!--<script src="js/skippr.min.js"></script>-->
+    <!--<script src="js/script.js"></script>-->
+    <!--全てbootstrapになおしました-->
     <header>
-      <div class="header-area">
-        <div class="heading">
-          <%= link_to root_path do %>
-            <%= image_tag"img/ol_nagano_logo.png",class:"logo"%>
-
-          <% end %>
-        </div>
-        <!-- リスト -->
-        <nav class="header-nav">
-          <ul>
-              <!--サインインする前-->
-              <li><%= link_to ' about',homes_about_path,class: 'nav-list-item' %></li>
-              <li><%= link_to ' items',items_path,class: 'nav-list-item' %></li>
-              <li><%= link_to ' 新規登録',new_customer_registration_path,class: 'nav-list-item' %></li>
-              <li><%= link_to ' ログイン',new_customer_session_path,class: 'nav-list-item' %></li>
-              
+      <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+        <!--アイコン部分-->
+        <%= link_to root_path do %>
+          <%= image_tag"img/ol_nagano_logo.png",class:"navbar-brand"%>
+        <% end %>
+        <!--ハンバーガー部分-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--ナビゲーションメニュー-->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <% if customer_signed_in? %>
+              <li class="nav-item">
+                <%= link_to ' お店の紹介', homes_about_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to ' 商品一覧', items_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to ' カートリスト', cart_items_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to ' マイページ', customers_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to ' ログアウト', destroy_customer_session_path,method: :delete, class: 'nav-link text-white' %>
+              </li>
+            <% elsif admin_signed_in? %>
+              <li class="nav-item">
+                <%= link_to ' 商品一覧', admin_items_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to ' 会員一覧', admin_customers_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to ' 注文履歴一覧', admin_orders_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to ' ジャンル一覧', admin_genres_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to ' ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-white' %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to ' お店の紹介', homes_about_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to " 商品一覧", items_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to ' 新規登録', new_customer_registration_path, class: 'nav-link text-white' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to ' ログイン', new_customer_session_path, class: 'nav-link text-white' %>
+              </li>
+            <% end %>
           </ul>
-        </nav>
-      </div>
+          <!--検索欄-->
+          <div class="form-inline my-2 my-lg-0" type="search" placeholder="Search" aria-label="Search">
+            <% if customer_signed_in? %>
+              <%= form_with url: search_search_path, method: :get, local: true do |f| %>
+                <!--フォームに打ち込まれた文字列をvalueとして送信-->
+                <%= f.text_field 'search[value]', class: "form-control mr-sm-2", placeholder:"商品名を検索" %>
+                <%= f.submit "検索",class: "btn btn-info my-2 my-sm-0" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </nav>
     </header>
+
     <main>
       <%= yield %>
     </main>
-    <!--フッター-->
-    <footer>
-      <p>©︎2021 SummerTomato</p>
+
+    <footer class="footer">
+      <div class="navbar navbar-expand-lg navbar-light bg-secondary" style="height: 100px;">
+      <p class="text-white mx-auto ">©︎2021 SummerTomato</p>
+      </div>
     </footer>
+
   </body>
 </html>
