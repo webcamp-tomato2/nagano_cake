@@ -17,6 +17,8 @@
             <tr>
               <td><%= link_to order.set_date, admin_order_path(order) %></td>
               <td><%= order.customer.full_name %></td>
+              <!--<td>%= order.name %></td>-->
+
               <td>
                 <%= order.order_details.count %>
               </td>
