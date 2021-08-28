@@ -23,6 +23,7 @@
       <%= f.label :order_address_id, "登録済み住所から登録" %>
       <%= f.collection_select :order_address_id , current_customer.addresses, :id, :address , :include_blank => "選択してください", class: "form-control",size: "20x40" %>
       <br />
+      
       <%= f.radio_button :address_option, 2 %>
       <%= f.label :order_address_id, "新しいお届け先" %><br />
 

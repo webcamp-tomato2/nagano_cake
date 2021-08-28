@@ -19,24 +19,24 @@
         </figcaption>
         <figcaption class="figure-caption text-right">
           <!--カートに商品を入れる-->
-            <!--商品が販売中か停止中かで分岐-->
-            <% if @item.is_active == false %>
-              <p>soldout</p>
-            <% else %>
+          <!--商品が販売中か停止中かで分岐-->
+          <% if @item.is_active == false %>
+            <p>soldout</p>
+          <% else %>
             <!--サインインしているかどうかで分岐-->
             <% if customer_signed_in? %>
-              <%= form_with model:@cart_item,url:cart_items_path,method: :post,local:true do |f| %>
+              <%= form_with model:@cart_item, url:cart_items_path,method: :post, local:true do |f| %>
                 <!--隠れフィールドで商品と顧客(当人)の情報を数量にリンクさせている-->
                 <%= f.hidden_field :item_id, value:@item.id %>
                 <%= f.hidden_field :customer_id, :value => current_customer.id %>
                 <!--選択されていない状態では'個数選択'になるようにする-->
-                <%= f.select :amount,[1,2,3,4,5,6,7,8,9,10],{include_blank:'個数選択'},required:true %>
-                <div class="clearfix">
+                <%= f.select :amount,[1,2,3,4,5,6,7,8,9,10], {include_blank:'個数選択'}, required:true %>
+                <div class="clearfix mt-4">
                   <%= f.submit 'カートに入れる', class:"btn btn-outline-info float-right" %>
                 </div>
               <% end %>
             <% else %>
-            <p>注文にはログインが必要です</p>
+              <p>注文にはログインが必要です</p>
             <% end %>
           <% end %>
         </figcaption>

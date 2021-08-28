@@ -4,24 +4,23 @@
       <h5 class="title3">管理者ログイン</h5>
       <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
 
-      <form class="form-horizontal">
-        <div class="form-group">
-          <%= f.label :email, class: "form-label, col-1" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control, col-4" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :password, class: "form-label, col-1" %>
-          <%= f.password_field :password, autocomplete: "current-password", class: "form-control, col-4" %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "Log in", class: "btn btn-info" %>
-        </div>
-      </form>
+        <form class="form-horizontal">
+          <div class="form-group">
+            <%= f.label :email, class: "form-label, col-1" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control, col-4" %>
+          </div>
+  
+          <div class="form-group">
+            <%= f.label :password, class: "form-label, col-1" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control, col-4" %>
+          </div>
+  
+          <div class="actions">
+            <%= f.submit "Log in", class: "btn btn-info" %>
+          </div>
+        </form>
 
       <% end %>
-
 
     </div>
   </div>
