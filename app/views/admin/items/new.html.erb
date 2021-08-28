@@ -6,6 +6,7 @@
       <%= form_with model: @item, url: admin_items_path, local: true do |f| %>
 
       <form class="form-horizontal">
+        
         <div class="form-group">
           <%= f.label :image, '商品画像', class: "form-label, col-2" %>
           <%= f.attachment_field :image, class: "form-control, col-4" %>

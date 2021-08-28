@@ -5,18 +5,15 @@
 
       <%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
 
-
-
-          <div class="form-group">
-            <%= f.label :name, 'ジャンル名', class: "form-label, col-1.5" %>
-            <%= f.text_field :name, class: "form-control, col-2" %>
-            <%= f.attachment_field :image, class: "form-control, col-4" %>
-            <%= f.submit "新規登録", class: "btn btn-info" %>
-          </div>
-
-
+        <div class="form-group">
+          <%= f.label :name, 'ジャンル名', class: "form-label, col-1.5" %>
+          <%= f.text_field :name, class: "form-control, col-2" %>
+          <%= f.attachment_field :image, class: "form-control, col-4" %>
+          <%= f.submit "新規登録", class: "btn btn-info" %>
+        </div>
 
       <% end %>
+      
     </div>
   </div>
 

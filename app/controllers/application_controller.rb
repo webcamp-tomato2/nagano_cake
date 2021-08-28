@@ -24,10 +24,10 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
 
     added_attrs = [:first_name,:last_name,:first_name_kana,:last_name_kana,:postal_code,
-    :address,:telephone_number, :email]
+                    :address,:telephone_number, :email]
 
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name,:last_name,:first_name_kana,
-    :last_name_kana,:postal_code,:address,:telephone_number,:is_deleted])
+                                        :last_name_kana,:postal_code,:address,:telephone_number,:is_deleted])
 
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
 
