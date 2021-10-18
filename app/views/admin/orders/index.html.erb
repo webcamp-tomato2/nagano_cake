@@ -12,13 +12,12 @@
             <th>注文ステータス</th>
           </tr>
         </thead>
-        
+
         <tbody>
           <% @orders.each do |order| %>
             <tr>
               <td><%= link_to order.set_date, admin_order_path(order) %></td>
-              <td><%= order.customer.full_name %></td>
-              <!--<td>%= order.name %></td>-->
+              <td><%= order.name %></td>
 
               <td>
                 <%= order.order_details.count %>
@@ -28,7 +27,7 @@
           <% end %>
         </tbody>
       </table>
-      
+
     </div>
   </div>
 </div>
