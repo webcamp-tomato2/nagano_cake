@@ -39,7 +39,6 @@ class Public::OrdersController < ApplicationController
     end
   end
 
-
   def create
     @order = Order.new(order_params)
     @order.shipping_cost = 800
