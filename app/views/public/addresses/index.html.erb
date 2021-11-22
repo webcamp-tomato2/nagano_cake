@@ -4,8 +4,12 @@
   <div class="row w-25 mx-auto">
     <div class="col">
       <table>
+<<<<<<< HEAD
+        <%= form_with model: @address,url: addresses_path(@address),method: :post,local: true do |f| %>
+=======
         <!--%= form_with model: @address, url: addresses_path(@address), method: :post, local: true do |f| %>-->
         <%= form_with model: @address, url: addresses_path, method: :post, local: true do |f| %>
+>>>>>>> 0e98ef05b011de8373489f2431e56f23c8d33f5d
           <tbody>
             <tr>
               <td>郵便番号</td>
